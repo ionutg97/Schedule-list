@@ -15,7 +15,7 @@ namespace ScheduleListPersistance
 
         private Persistance()
         {
-            string connString = "SERVER= 127.0.0.1;PORT=3306;DATABASE=schedule_list;UID=root;PASSWORD=mysql;";
+            string connString = "SERVER= 127.0.0.1;PORT=3306;DATABASE=schedule_list;UID=root;PASSWORD=admin;";
 
             try
             {
