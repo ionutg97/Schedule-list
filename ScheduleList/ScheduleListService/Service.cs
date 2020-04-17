@@ -11,7 +11,7 @@ namespace ScheduleListService
 
         public Service()
         {
-            _persistance = new Persistance();
+            _persistance =Persistance.getInstancePersistance();
         }
         public void sayHello()
         {

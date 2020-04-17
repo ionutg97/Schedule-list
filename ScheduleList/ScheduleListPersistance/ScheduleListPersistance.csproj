@@ -8,4 +8,10 @@
     <ProjectReference Include="..\Models\Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\ScheduleListPersistance\bin\Debug\netstandard2.0\MySql.Data (1).dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
