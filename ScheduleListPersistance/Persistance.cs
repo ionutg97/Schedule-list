@@ -28,6 +28,7 @@ namespace ScheduleListPersistance
                 _connection.ConnectionString = connString;
                 _connection.Open();
                 Console.WriteLine("Connection success!");
+
             }
             catch (MySqlException ex)
             {
