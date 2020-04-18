@@ -1,5 +1,7 @@
-﻿using ScheduleListService;
+﻿using Models;
+using ScheduleListService;
 using System;
+using System.Collections.Generic;
 
 namespace ScheduleListController
 {
@@ -11,10 +13,50 @@ namespace ScheduleListController
         {
             _service = new Service();
         }
+
+        /// <summary>
+        ///  Galan Ionut Andrei
+        ///  This method was created to check if everything works well.
+        ///  It connect view layer wiht controller layer.
+        /// </summary>
         public void sayHello()
         {
-            _service.sayHello();
+            _service.SayHello();
             Console.WriteLine("Hello from controller");
+
+            DisplayDays();
+            DisplayTasks();
         }
-    }
+
+        /// <summary>
+        ///  Halip Vasile Emanuel
+        ///  Call the method from the service layer.
+        ///  Get days list and display it.
+        /// </summary>
+        public void DisplayDays()
+        {
+           List<Day> days = _service.GetDays();
+
+            foreach(var day in days)
+            {
+                Console.WriteLine("--->  " + day.Date + " " + day.Task_id);
+            }
+        }
+
+        /// <summary>
+        ///  Halip Vasile Emanuel
+        ///  Call the method from the service layer.
+        ///  Get tasks list and display it.
+        /// </summary>
+        public void DisplayTasks()
+        {
+            List<Task> tasks = _service.GetTasks();
+
+            foreach (var task in tasks)
+            {
+                Console.WriteLine("--->  " + task.Date + " " + task.Title + " "+ task.Subtitle 
+                    + " " + task.Description + " " + task.Status + " " + task.Priority);
+            }
+        }
+    } 
 }

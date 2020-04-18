@@ -1,7 +1,9 @@
-﻿using ScheduleListPersistance;
+﻿using Models;
+using ScheduleListPersistance;
 using System;
 using System.Collections.Generic;
 using System.Text;
+ 
 
 namespace ScheduleListService
 {
@@ -11,9 +13,30 @@ namespace ScheduleListService
 
         public Service()
         {
-            _persistance = Persistance.getInstancePersistance();
+            _persistance = Persistance.getInstanceOfMySqlConnection();
         }
-        public void sayHello()
+
+        /// <summary>
+        ///  Halip Vasile Emanuel
+        ///  Call the method from the persistance layer.
+        ///  Get days list.
+        /// </summary>
+        public List<Day> GetDays()
+        {
+            return _persistance.GetDays();
+        }
+
+        /// <summary>
+        ///  Halip Vasile Emanuel
+        ///  Call the method from the persistance layer.
+        ///  Get task list.
+        /// </summary>
+        public List<Task> GetTasks()
+        {
+            return _persistance.GetTasks();
+        }
+
+        public void SayHello()
         {
             _persistance.SayHello();
             Console.WriteLine("Hello from service");
