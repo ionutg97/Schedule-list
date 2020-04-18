@@ -4,10 +4,14 @@ using System.Text;
 
 namespace Models
 {
-    class Task
+    /// <summary>
+    ///  Halip Vasile Emanuel
+    ///  Task model.
+    /// </summary>
+    public class Task
     {
         private int _id;
-        private DateTime _date;
+        private DateTime _date;   //only the time is needed here
         private string _title;
         private string _subtitle;
         private string _description;
