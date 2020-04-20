@@ -58,6 +58,8 @@ namespace ScheduleList
             CleanControls();
             panel6.Visible = true;
             panel7.Visible = false;
+
+            controller.SayHello();
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -209,6 +211,11 @@ namespace ScheduleList
             startDate = monthCalendar1.SelectionRange.Start;
             var selectedDate = startDate.ToString("dd MMM yyyy");
             selectedDates++;
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

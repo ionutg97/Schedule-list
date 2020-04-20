@@ -66,15 +66,12 @@ namespace ScheduleListPersistance
 
             while (rdr.Read())
             {
-                Console.WriteLine("{0} {1} {2}", rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2));
+                Console.WriteLine("{0} {1}", rdr.GetInt32(0), rdr.GetString(1));
 
-                int task_id = rdr.GetInt32(2);
                 string stringDate = rdr.GetString(1);
-                DateTime dt = ConvertStringToDate(stringDate);
 
                 Day day = new Day();
-                day.Date = dt;
-                day.Task_id = task_id;
+                day.Date = stringDate;
 
                 days.Add(day);
             }
@@ -97,22 +94,17 @@ namespace ScheduleListPersistance
 
             while (rdr.Read())
             {
-                Console.WriteLine("{0} {1} {2} {3} {4} {5} {6}", rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2),
-                    rdr.GetString(3), rdr.GetString(4), rdr.GetString(5), rdr.GetInt32(6));
+                Console.WriteLine("{0} {1} {2} {3} {4} {5} {6} {7}", rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2),
+                    rdr.GetString(3), rdr.GetString(4), rdr.GetString(5), rdr.GetInt32(6), rdr.GetInt32(7));
 
-                // formatul este asa =>       12:00:00
-                string time = rdr.GetString(1);
-                string[] times = time.Split(':');
-
-                DateTime date = new DateTime(2020, 1, 1, Int32.Parse(times[0]), Int32.Parse(times[1]), Int32.Parse(times[2]));
-
+                string stringTime = rdr.GetString(1);
                 string title = rdr.GetString(2);
                 string subtitle = rdr.GetString(3);
                 string description = rdr.GetString(4);
                 string status = rdr.GetString(5);
                 int priority = rdr.GetInt32(6);
 
-                Task task = CreateNewTask(date, title, subtitle, description, status, priority);
+                Task task = CreateNewTask(stringTime, title, subtitle, description, status, priority);
 
                 tasks.Add(task);
             }
@@ -122,14 +114,47 @@ namespace ScheduleListPersistance
         }
 
 
+
+        List<Task> IPersistance.GetTasksForAGivenDate(string date)
+        {
+            List<Task> tasks = new List<Task>();
+
+            string sql = "select t.time, d.date, t.title, t.subtitle, t.description, t.status, t.priority from tasks t join days d using(id) where d.date = @data";
+            var cmd = new MySqlCommand(sql, _connection);
+            cmd.Parameters.AddWithValue("@date", date);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                Console.WriteLine("{0} {1} {2} {3} {4} {5} {6}", rdr.GetString(0), rdr.GetString(1), rdr.GetString(2),
+                    rdr.GetString(3), rdr.GetString(4), rdr.GetString(5), rdr.GetInt32(6));
+
+                string time = rdr.GetString(0);
+                string stringDate = rdr.GetString(1);
+                string title = rdr.GetString(2);
+                string subtitle = rdr.GetString(3);
+                string description = rdr.GetString(4);
+                string status = rdr.GetString(5);
+                int priority = rdr.GetInt32(6);
+
+                Task task = CreateNewTask(stringDate, title, subtitle, description, status, priority);
+
+                tasks.Add(task);
+            }
+            rdr.Close();
+
+            return tasks;
+
+        }
+
         /// <summary>
         ///  Halip Vasile Emanuel
         ///  Create a new task with given values.
         /// </summary>
-        private Task CreateNewTask(DateTime date, string title, string subtitle, string description, string status, int priority)
+        private Task CreateNewTask(string time, string title, string subtitle, string description, string status, int priority)
         {
             Task task = new Task();
-            task.Date = date;
+            task.Time = time;
             task.Title = title;
             task.Subtitle = subtitle;
             task.Description = description;
