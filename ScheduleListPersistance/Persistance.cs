@@ -62,20 +62,27 @@ namespace ScheduleListPersistance
 
             string sql = "SELECT * FROM days";
             var cmd = new MySqlCommand(sql, _connection);
-            MySqlDataReader rdr = cmd.ExecuteReader();
 
-            while (rdr.Read())
+            try
             {
-                Console.WriteLine("{0} {1}", rdr.GetInt32(0), rdr.GetString(1));
+                MySqlDataReader rdr = cmd.ExecuteReader();
 
-                string stringDate = rdr.GetString(1);
+                while (rdr.Read())
+                {
+                    Console.WriteLine("{0} {1}", rdr.GetInt32(0), rdr.GetString(1));
 
-                Day day = new Day();
-                day.Date = stringDate;
+                    string stringDate = rdr.GetString(1);
 
-                days.Add(day);
+                    Day day = new Day();
+                    day.Date = stringDate;
+
+                    days.Add(day);
+                }
+                rdr.Close();
+            }catch(MySqlException e)
+            {
+                Console.WriteLine(e.ToString());
             }
-            rdr.Close();
 
             return days;
         }
@@ -90,25 +97,32 @@ namespace ScheduleListPersistance
 
             string sql = "SELECT * FROM tasks";
             var cmd = new MySqlCommand(sql, _connection);
-            MySqlDataReader rdr = cmd.ExecuteReader();
 
-            while (rdr.Read())
+            try
             {
-                Console.WriteLine("{0} {1} {2} {3} {4} {5} {6} {7}", rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2),
-                    rdr.GetString(3), rdr.GetString(4), rdr.GetString(5), rdr.GetInt32(6), rdr.GetInt32(7));
+                MySqlDataReader rdr = cmd.ExecuteReader();
 
-                string stringTime = rdr.GetString(1);
-                string title = rdr.GetString(2);
-                string subtitle = rdr.GetString(3);
-                string description = rdr.GetString(4);
-                string status = rdr.GetString(5);
-                int priority = rdr.GetInt32(6);
+                while (rdr.Read())
+                {
+                    Console.WriteLine("{0} {1} {2} {3} {4} {5} {6} {7}", rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2),
+                        rdr.GetString(3), rdr.GetString(4), rdr.GetString(5), rdr.GetInt32(6), rdr.GetInt32(7));
 
-                Task task = CreateNewTask(stringTime, title, subtitle, description, status, priority);
+                    string stringTime = rdr.GetString(1);
+                    string title = rdr.GetString(2);
+                    string subtitle = rdr.GetString(3);
+                    string description = rdr.GetString(4);
+                    string status = rdr.GetString(5);
+                    int priority = rdr.GetInt32(6);
 
-                tasks.Add(task);
+                    Task task = CreateNewTask(stringTime, title, subtitle, description, status, priority);
+
+                    tasks.Add(task);
+                }
+                rdr.Close();
+            }catch(MySqlException e)
+            {
+                Console.WriteLine(e.ToString());
             }
-            rdr.Close();
 
             return tasks;
         }
@@ -120,26 +134,34 @@ namespace ScheduleListPersistance
             string sql = "select t.time, d.date, t.title, t.subtitle, t.description, t.status, t.priority from tasks t join days d using(id) where d.date = @data";
             var cmd = new MySqlCommand(sql, _connection);
             cmd.Parameters.AddWithValue("@date", date);
-            MySqlDataReader rdr = cmd.ExecuteReader();
 
-            while (rdr.Read())
+            try
             {
-                Console.WriteLine("{0} {1} {2} {3} {4} {5} {6}", rdr.GetString(0), rdr.GetString(1), rdr.GetString(2),
-                    rdr.GetString(3), rdr.GetString(4), rdr.GetString(5), rdr.GetInt32(6));
+                MySqlDataReader rdr = cmd.ExecuteReader();
 
-                string time = rdr.GetString(0);
-                string stringDate = rdr.GetString(1);
-                string title = rdr.GetString(2);
-                string subtitle = rdr.GetString(3);
-                string description = rdr.GetString(4);
-                string status = rdr.GetString(5);
-                int priority = rdr.GetInt32(6);
+                while (rdr.Read())
+                {
+                    Console.WriteLine("{0} {1} {2} {3} {4} {5} {6}", rdr.GetString(0), rdr.GetString(1), rdr.GetString(2),
+                        rdr.GetString(3), rdr.GetString(4), rdr.GetString(5), rdr.GetInt32(6));
 
-                Task task = CreateNewTask(stringDate, title, subtitle, description, status, priority);
+                    string time = rdr.GetString(0);
+                    string stringDate = rdr.GetString(1);
+                    string title = rdr.GetString(2);
+                    string subtitle = rdr.GetString(3);
+                    string description = rdr.GetString(4);
+                    string status = rdr.GetString(5);
+                    int priority = rdr.GetInt32(6);
 
-                tasks.Add(task);
+                    Task task = CreateNewTask(stringDate, title, subtitle, description, status, priority);
+
+                    tasks.Add(task);
+                }
+                rdr.Close();
+
+            }catch(MySqlException e)
+            {
+                Console.WriteLine(e.ToString());
             }
-            rdr.Close();
 
             return tasks;
 
@@ -181,12 +203,21 @@ namespace ScheduleListPersistance
         {
             string sql = "INSERT INTO days(`date`) VALUES(@date)";
 
-            var cmd = new MySqlCommand(sql, _connection);
-            cmd.CommandText = sql;
-            cmd.Parameters.AddWithValue("@date", currentDate);
+            try
+            {
 
-            cmd.ExecuteNonQuery();
-        }
+
+                var cmd = new MySqlCommand(sql, _connection);
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@date", currentDate);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+}
 
 
         /// <summary>
@@ -198,18 +229,25 @@ namespace ScheduleListPersistance
             string sql = "INSERT INTO tasks(`time`, `title`, `subtitle`, `description`, `status`,`priority`, `day_id`)" +
                 " VALUES(@time, @test_title, @test_subtitle, @test_description, @status, @priority, @day_id)";
 
-            var cmd = new MySqlCommand(sql, _connection);
+            try
+            {
+                var cmd = new MySqlCommand(sql, _connection);
 
-            cmd.CommandText = sql;
-            cmd.Parameters.AddWithValue("@time", task.Time);
-            cmd.Parameters.AddWithValue("@test_title", task.Title);
-            cmd.Parameters.AddWithValue("@test_subtitle", task.Subtitle);
-            cmd.Parameters.AddWithValue("@test_description", task.Description);
-            cmd.Parameters.AddWithValue("@status", task.Status);
-            cmd.Parameters.AddWithValue("@priority", task.Priority);
-            cmd.Parameters.AddWithValue("@day_id", task.DayId);
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@time", task.Time);
+                cmd.Parameters.AddWithValue("@test_title", task.Title);
+                cmd.Parameters.AddWithValue("@test_subtitle", task.Subtitle);
+                cmd.Parameters.AddWithValue("@test_description", task.Description);
+                cmd.Parameters.AddWithValue("@status", task.Status);
+                cmd.Parameters.AddWithValue("@priority", task.Priority);
+                cmd.Parameters.AddWithValue("@day_id", task.DayId);
 
-            cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
         }
 
 
@@ -224,22 +262,22 @@ namespace ScheduleListPersistance
             string sql = "select id from days d where d.date = @date";
             var cmd = new MySqlCommand(sql, _connection);
             cmd.Parameters.AddWithValue("@date", date);
-            MySqlDataReader rdr = cmd.ExecuteReader();
 
             try
             {
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
                 while (rdr.Read())
                 {
                     id = rdr.GetInt32(0);
                 }
                 rdr.Close();
-            }
-            catch(Exception e)
+
+            }catch(MySqlException e)
             {
-                Console.WriteLine("GetIdForAGivenDate");
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine(e.ToString());
             }
-           
+          
             return id;
         }
 
@@ -252,16 +290,23 @@ namespace ScheduleListPersistance
             string sql = "SELECT * FROM days where days.date=@date";
             var cmd = new MySqlCommand(sql, _connection);
             cmd.Parameters.AddWithValue("@date", currentDate);
-            MySqlDataReader rdr = cmd.ExecuteReader();
 
-            while (rdr.Read())
+            try
             {
-                //exista
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    //exista
+                    rdr.Close();
+                    return true;
+                }
                 rdr.Close();
-                return true;
+            }catch(MySqlException e)
+            {
+                Console.WriteLine(e.ToString());
             }
             //nu exista
-            rdr.Close();
             return false;
         }
 
