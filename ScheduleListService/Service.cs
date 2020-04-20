@@ -19,6 +19,16 @@ namespace ScheduleListService
         /// <summary>
         ///  Halip Vasile Emanuel
         ///  Call the method from the persistance layer.
+        ///  Create a new Task;
+        /// </summary>
+        public void CreateNewTask(Task task)
+        {
+            _persistance.CreateNewTask(task);
+        }
+
+        /// <summary>
+        ///  Halip Vasile Emanuel
+        ///  Call the method from the persistance layer.
         ///  Get days list.
         /// </summary>
         public List<Day> GetDays()
@@ -40,6 +50,22 @@ namespace ScheduleListService
         {
             _persistance.SayHello();
             Console.WriteLine("Hello from service");
+
+            //data exista deja -> ar trebui sa faca insert direct la task
+            Task task = CreateNewTask("09:50:05", "y", "y", "y", "new", 2);
+            CreateNewTask(task);
+        }
+
+        private Task CreateNewTask(string time, string title, string subtitle, string description, string status, int priority)
+        {
+            Task task = new Task();
+            task.Time = time;
+            task.Title = title;
+            task.Subtitle = subtitle;
+            task.Description = description;
+            task.Status = status;
+            task.Priority = priority;
+            return task;
         }
     }
 }
