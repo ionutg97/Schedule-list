@@ -58,5 +58,10 @@ namespace ScheduleListController
                     + " " + task.Description + " " + task.Status + " " + task.Priority);
             }
         }
+
+        public void CreateNewTask(Task task)
+        {
+            _service.CreateNewTask(task);
+        }
     } 
 }

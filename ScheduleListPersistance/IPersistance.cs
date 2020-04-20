@@ -14,5 +14,7 @@ namespace ScheduleListPersistance
 
         List<Task> GetTasksForAGivenDate(String date);
 
+        void CreateNewTask(Task task);
+
     }
 }

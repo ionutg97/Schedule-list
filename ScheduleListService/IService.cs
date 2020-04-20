@@ -11,5 +11,7 @@ namespace ScheduleListService
         List<Day> GetDays();
         List<Task> GetTasks();
 
+        void CreateNewTask(Task task);
+
     }
 }
