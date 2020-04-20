@@ -19,7 +19,7 @@ namespace ScheduleListController
         ///  This method was created to check if everything works well.
         ///  It connect view layer wiht controller layer.
         /// </summary>
-        public void sayHello()
+        public void SayHello()
         {
             _service.SayHello();
             Console.WriteLine("Hello from controller");
@@ -39,7 +39,7 @@ namespace ScheduleListController
 
             foreach(var day in days)
             {
-                Console.WriteLine("--->  " + day.Date + " " + day.Task_id);
+                Console.WriteLine("--->  " + day.Date);
             }
         }
 
@@ -54,7 +54,7 @@ namespace ScheduleListController
 
             foreach (var task in tasks)
             {
-                Console.WriteLine("--->  " + task.Date + " " + task.Title + " "+ task.Subtitle 
+                Console.WriteLine("--->  " + task.Time + " " + task.Title + " "+ task.Subtitle 
                     + " " + task.Description + " " + task.Status + " " + task.Priority);
             }
         }

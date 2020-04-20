@@ -11,5 +11,8 @@ namespace ScheduleListPersistance
         void SayHello();
         List<Day> GetDays();
         List<Task> GetTasks();
+
+        List<Task> GetTasksForAGivenDate(String date);
+
     }
 }
