@@ -154,7 +154,8 @@ namespace ScheduleListPersistance
         /// </summary>
         public void CreateNewTask(Task task)
         {
-            string currentDate = "20.04.2050";//DateTime.UtcNow.Date.ToString("dd.MM.yyyy");
+            //string currentDate = "20.04.2050"; // use this to see tha else branch is working as expected
+            string currentDate = DateTime.UtcNow.Date.ToString("dd.MM.yyyy");
             Console.WriteLine(currentDate);
 
             if (DayExists(currentDate) == true) {
