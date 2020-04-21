@@ -347,6 +347,60 @@ namespace ScheduleListPersistance
             DateTime dt = new DateTime(year, month, day, 0, 0, 0);
             return dt;
         }
+
+        /// <summary>
+        ///  Stan Dragos
+        ///  Get completed task number
+        /// </summary>
+        int IPersistance.GetCompletedTaskNumbers()
+        {
+            int number = 0;
+            string sql = "SELECT * FROM tasks where status = @status";
+            var cmd = new MySqlCommand(sql, _connection);
+            cmd.Parameters.AddWithValue("@status", "done");
+
+            try
+            {
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    number++;
+                }
+                rdr.Close();
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return number;
+        }
+
+        /// <summary>
+        ///  Stan Dragos
+        ///  Get in progress task number
+        /// </summary>
+        int IPersistance.GetInProgressTaskNumbers()
+        {
+            int number = 0;
+            string sql = "SELECT * FROM tasks where status = @status";
+            var cmd = new MySqlCommand(sql, _connection);
+            cmd.Parameters.AddWithValue("@status", "in progress");
+
+            try
+            {
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    number++;
+                }
+                rdr.Close();
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return number;
+        }
     }
 }
 

@@ -67,5 +67,14 @@ namespace ScheduleListService
             task.Priority = priority;
             return task;
         }
+        public int GetCompletedTaskNumbers()
+        {
+            return _persistance.GetCompletedTaskNumbers();
+        }
+
+        public int GetInProgressTaskNumbers()
+        {
+            return _persistance.GetInProgressTaskNumbers();
+        }
     }
 }
