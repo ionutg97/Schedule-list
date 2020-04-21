@@ -76,5 +76,10 @@ namespace ScheduleListService
         {
             return _persistance.GetInProgressTaskNumbers();
         }
+
+        public void DeleteTask(Task task)
+        {
+            _persistance.DeleteTask(task);
+        }
     }
 }

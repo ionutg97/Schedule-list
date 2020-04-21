@@ -59,6 +59,11 @@ namespace ScheduleListController
             }
         }
 
+        /// <summary>
+        ///  Halip Vasile Emanuel
+        ///  Call the method from the service layer.
+        ///  Create new Task.
+        /// </summary>
         public void CreateNewTask(Task task)
         {
             _service.CreateNewTask(task);
@@ -66,16 +71,31 @@ namespace ScheduleListController
 
         /// <summary>
         ///  Stan Dragos
-        ///  Get number of completed/in progress tasks
+        ///  Get number of "completed" tasks.
         /// </summary>
         public int GetCompletedTaskNumbers()
         {
             return _service.GetCompletedTaskNumbers();
         }
+        
 
+        /// <summary>
+        ///  Stan Dragos
+        ///  Get number of "in progress" tasks.
+        /// </summary>
         public int GetInProgressTaskNumbers()
         {
             return _service.GetInProgressTaskNumbers();
+        }
+
+        /// <summary>
+        ///  Halip Vasile Emanuel
+        ///  Call the method from the service layer.
+        ///  Delete a task.
+        /// </summary>
+        public void DeleteTask()
+        {
+            _service.DeleteTask(null);
         }
     }
 }
