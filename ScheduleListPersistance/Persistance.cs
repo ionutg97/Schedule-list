@@ -253,6 +253,32 @@ namespace ScheduleListPersistance
 
         /// <summary>
         ///  Halip Vasile Emanuel
+        ///  Delete a task from db.
+        /// </summary>
+        public void DeleteTask(Task task)
+        {
+            string sql = "delete from tasks where time=@time and title=@title and day_id=@day_id and description=@description";
+
+            try
+            {
+                var cmd = new MySqlCommand(sql, _connection);
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@time", task.Time);
+                cmd.Parameters.AddWithValue("@title", task.Title);
+                cmd.Parameters.AddWithValue("@day_id", task.DayId);
+                cmd.Parameters.AddWithValue("@description", task.Description);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
+
+
+        /// <summary>
+        ///  Halip Vasile Emanuel
         ///  Return a unique id from bd for a given date from days table.
         /// </summary>
         private int GetIdForAGivenDate(string date)
@@ -348,25 +374,61 @@ namespace ScheduleListPersistance
             return dt;
         }
 
-        public void DeleteTask(Task task)
+        /// <summary>
+        ///  Stan Dragos
+        ///  Get completed task number
+        /// </summary>
+        int IPersistance.GetCompletedTaskNumbers()
         {
-            string sql = "delete from tasks where time=@time and title=@title and day_id=@day_id and description=@description";
+            int number = 0;
+            string sql = "SELECT * FROM tasks where status = @status";
+            var cmd = new MySqlCommand(sql, _connection);
+            cmd.Parameters.AddWithValue("@status", "done");
 
             try
             {
-                var cmd = new MySqlCommand(sql, _connection);
-                cmd.CommandText = sql;
-                cmd.Parameters.AddWithValue("@time", task.Time);
-                cmd.Parameters.AddWithValue("@title", task.Title);
-                cmd.Parameters.AddWithValue("@day_id", task.DayId);
-                cmd.Parameters.AddWithValue("@description", task.Description);
-
-                cmd.ExecuteNonQuery();
-            }catch(MySqlException e)
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    number++;
+                }
+                rdr.Close();
+            }
+            catch (MySqlException e)
             {
                 Console.WriteLine(e.ToString());
             }
-}
+            return number;
+        }
+
+        /// <summary>
+        ///  Stan Dragos
+        ///  Get in progress task number
+        /// </summary>
+        int IPersistance.GetInProgressTaskNumbers()
+        {
+            int number = 0;
+            string sql = "SELECT * FROM tasks where status = @status";
+            var cmd = new MySqlCommand(sql, _connection);
+            cmd.Parameters.AddWithValue("@status", "in progress");
+
+            try
+            {
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    number++;
+                }
+                rdr.Close();
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return number;
+        }
     }
+
+  
 }
 

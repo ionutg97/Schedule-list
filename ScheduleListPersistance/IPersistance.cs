@@ -16,5 +16,10 @@ namespace ScheduleListPersistance
 
         void CreateNewTask(Task task);
 
+        int GetCompletedTaskNumbers();
+
+        int GetInProgressTaskNumbers();
+
+        void DeleteTask(Task task);
     }
 }
