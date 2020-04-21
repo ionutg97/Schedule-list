@@ -347,6 +347,26 @@ namespace ScheduleListPersistance
             DateTime dt = new DateTime(year, month, day, 0, 0, 0);
             return dt;
         }
+
+        public void DeleteTask(Task task)
+        {
+            string sql = "delete from tasks where time=@time and title=@title and day_id=@day_id and description=@description";
+
+            try
+            {
+                var cmd = new MySqlCommand(sql, _connection);
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@time", task.Time);
+                cmd.Parameters.AddWithValue("@title", task.Title);
+                cmd.Parameters.AddWithValue("@day_id", task.DayId);
+                cmd.Parameters.AddWithValue("@description", task.Description);
+
+                cmd.ExecuteNonQuery();
+            }catch(MySqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+}
     }
 }
 
