@@ -63,5 +63,19 @@ namespace ScheduleListController
         {
             _service.CreateNewTask(task);
         }
-    } 
+
+        /// <summary>
+        ///  Stan Dragos
+        ///  Get number of completed/in progress tasks
+        /// </summary>
+        public int GetCompletedTaskNumbers()
+        {
+            return _service.GetCompletedTaskNumbers();
+        }
+
+        public int GetInProgressTaskNumbers()
+        {
+            return _service.GetInProgressTaskNumbers();
+        }
+    }
 }
