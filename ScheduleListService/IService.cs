@@ -18,5 +18,7 @@ namespace ScheduleListService
         int GetInProgressTaskNumbers();
 
         void DeleteTask(Task task);
+        Task UpdateTaskDetails(Task task, string title, string subtitle, string description);
+        Task UpdateTaskStatus(Task task, string status);
     }
 }

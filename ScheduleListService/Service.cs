@@ -81,5 +81,15 @@ namespace ScheduleListService
         {
             _persistance.DeleteTask(task);
         }
+
+        public Task UpdateTaskDetails(Task task, string title, string subtitle, string description)
+        {
+            return _persistance.UpdateTaskDetails(task, title, subtitle, description);
+        }
+
+        public Task UpdateTaskStatus(Task task, string status)
+        {
+            return _persistance.UpdateTaskStatus(task, status);
+        }
     }
 }

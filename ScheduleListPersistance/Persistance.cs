@@ -427,8 +427,56 @@ namespace ScheduleListPersistance
             }
             return number;
         }
-    }
 
-  
+        /// <summary>
+        ///  Stan Dragos
+        ///  Update a task from db by title, subtitle and description
+        /// </summary>
+        public Task UpdateTaskDetails(Task task, string title, string subtitle, string description)
+        {
+            string sql = "update tasks set title=@title, subtitle=@subtitle, description=@description where id=@id";
+
+            try
+            {
+                var cmd = new MySqlCommand(sql, _connection);
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@id", task.Id);
+                cmd.Parameters.AddWithValue("@title", title);
+                cmd.Parameters.AddWithValue("@subtitle", subtitle);
+                cmd.Parameters.AddWithValue("@description", description);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return task;
+        }
+
+        /// <summary>
+        ///  Stan Dragos
+        ///  Update a task from db by status
+        /// </summary>
+        public Task UpdateTaskStatus(Task task, string status)
+        {
+            string sql = "update tasks set status=@status where id=@id";
+
+            try
+            {
+                var cmd = new MySqlCommand(sql, _connection);
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@id", task.Id);
+                cmd.Parameters.AddWithValue("@status", status);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return task;
+        }
+    } 
 }
 
