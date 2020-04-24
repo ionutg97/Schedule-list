@@ -97,5 +97,25 @@ namespace ScheduleListController
         {
             _service.DeleteTask(null);
         }
+
+        /// <summary>
+        ///  Stan Dragos
+        ///  Call the method from the service layer.
+        ///  Update a task by title, subtitle and description.
+        /// </summary>
+        public Task UpdateTaskDetails(Task task, string title, string subtitle, string description)
+        {
+            return _service.UpdateTaskDetails(task, title, subtitle, description);
+        }
+
+        /// <summary>
+        ///  Stan Dragos
+        ///  Call the method from the service layer.
+        ///  Update a task by status.
+        /// </summary>
+        public Task UpdateTaskStatus(Task task, string status)
+        {
+            return _service.UpdateTaskStatus(task, status);
+        }
     }
 }

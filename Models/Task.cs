@@ -19,6 +19,11 @@ namespace Models
         private int _priority;
         private int _day_id;
 
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
         public string Time
         {
             get { return _time; }
