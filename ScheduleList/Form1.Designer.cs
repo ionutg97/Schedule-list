@@ -59,11 +59,29 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+
+          //
+          //view Sattistics page
+          //
+            this.button13 = new System.Windows.Forms.Button();
+            this.statsBlock = new System.Windows.Forms.GroupBox();
+            this.todayStats = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.weekStats = new System.Windows.Forms.Button();
+            this.monthStats = new System.Windows.Forms.Button();
+            this.hrLine = new System.Windows.Forms.Label();
+            this.overallProgressBar = new CircularProgressBar.CircularProgressBar();
+            this.finishedProgressBar = new CircularProgressBar.CircularProgressBar();
+            this.remainingProgressBar = new CircularProgressBar.CircularProgressBar();
+            this.efficiencyProgressBar = new CircularProgressBar.CircularProgressBar();
+
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.statsBlock.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -78,6 +96,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.MediumPurple;
+            this.panel1.Controls.Add(this.button13);
             this.panel1.Controls.Add(this.button8);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(21, 23);
@@ -132,6 +151,7 @@
             this.label8.Size = new System.Drawing.Size(80, 28);
             this.label8.TabIndex = 2;
             this.label8.Text = "label8";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // panel4
             // 
@@ -267,7 +287,7 @@
             // 
             // panel7
             // 
-            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Location = new System.Drawing.Point(3, 3);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(450, 467);
             this.panel7.TabIndex = 29;
@@ -430,11 +450,253 @@
             this.panel6.Size = new System.Drawing.Size(10, 10);
             this.panel6.TabIndex = 5;
             // 
+
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(238, 20);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(85, 53);
+            this.button13.TabIndex = 3;
+            this.button13.Text = "stats";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // statsBlock
+            // 
+            this.statsBlock.BackColor = System.Drawing.Color.MidnightBlue;
+            this.statsBlock.Controls.Add(this.efficiencyProgressBar);
+            this.statsBlock.Controls.Add(this.remainingProgressBar);
+            this.statsBlock.Controls.Add(this.finishedProgressBar);
+            this.statsBlock.Controls.Add(this.overallProgressBar);
+            this.statsBlock.Controls.Add(this.hrLine);
+            this.statsBlock.Controls.Add(this.monthStats);
+            this.statsBlock.Controls.Add(this.weekStats);
+            this.statsBlock.Controls.Add(this.label5);
+            this.statsBlock.Controls.Add(this.label2);
+            this.statsBlock.Controls.Add(this.todayStats);
+            this.statsBlock.ForeColor = System.Drawing.Color.Cornsilk;
+            this.statsBlock.Location = new System.Drawing.Point(526, 205);
+            this.statsBlock.Margin = new System.Windows.Forms.Padding(0);
+            this.statsBlock.Name = "statsBlock";
+            this.statsBlock.Padding = new System.Windows.Forms.Padding(0);
+            this.statsBlock.Size = new System.Drawing.Size(453, 603);
+            this.statsBlock.TabIndex = 0;
+            this.statsBlock.TabStop = false;
+            this.statsBlock.UseWaitCursor = true;
+            // 
+            // todayStats
+            // 
+            this.todayStats.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.todayStats.FlatAppearance.BorderSize = 3;
+            this.todayStats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.todayStats.Font = new System.Drawing.Font("Lucida Sans Unicode", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.todayStats.Location = new System.Drawing.Point(37, 94);
+            this.todayStats.Margin = new System.Windows.Forms.Padding(0);
+            this.todayStats.Name = "todayStats";
+            this.todayStats.Size = new System.Drawing.Size(93, 44);
+            this.todayStats.TabIndex = 0;
+            this.todayStats.Text = "Today";
+            this.todayStats.UseVisualStyleBackColor = false;
+            this.todayStats.Click += new System.EventHandler(this.todayStats_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(30, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(118, 21);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Hi Jhon Doe, ";
+            this.label2.UseWaitCursor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(30, 52);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(212, 21);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "This is yours statistics";
+            this.label5.UseWaitCursor = true;
+            // 
+            // weekStats
+            // 
+            this.weekStats.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.weekStats.FlatAppearance.BorderSize = 0;
+            this.weekStats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.weekStats.Font = new System.Drawing.Font("Lucida Sans Unicode", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weekStats.Location = new System.Drawing.Point(184, 94);
+            this.weekStats.Margin = new System.Windows.Forms.Padding(0);
+            this.weekStats.Name = "weekStats";
+            this.weekStats.Size = new System.Drawing.Size(93, 44);
+            this.weekStats.TabIndex = 3;
+            this.weekStats.Text = "Week";
+            this.weekStats.UseVisualStyleBackColor = false;
+            this.weekStats.Click += new System.EventHandler(this.weekStats_Click);
+            // 
+            // monthStats
+            // 
+            this.monthStats.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.monthStats.FlatAppearance.BorderSize = 0;
+            this.monthStats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.monthStats.Font = new System.Drawing.Font("Lucida Sans Unicode", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthStats.Location = new System.Drawing.Point(335, 94);
+            this.monthStats.Margin = new System.Windows.Forms.Padding(0);
+            this.monthStats.Name = "monthStats";
+            this.monthStats.Size = new System.Drawing.Size(93, 44);
+            this.monthStats.TabIndex = 4;
+            this.monthStats.Text = "Month";
+            this.monthStats.UseVisualStyleBackColor = false;
+            this.monthStats.Click += new System.EventHandler(this.monthStats_Click);
+            // 
+            // hrLine
+            // 
+            this.hrLine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.hrLine.Location = new System.Drawing.Point(0, 149);
+            this.hrLine.Name = "hrLine";
+            this.hrLine.Size = new System.Drawing.Size(447, 2);
+            this.hrLine.TabIndex = 5;
+            // 
+            // overallProgressBar
+            // 
+            this.overallProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.overallProgressBar.AnimationSpeed = 500;
+            this.overallProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.overallProgressBar.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.overallProgressBar.ForeColor = System.Drawing.Color.Black;
+            this.overallProgressBar.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.overallProgressBar.InnerMargin = 2;
+            this.overallProgressBar.InnerWidth = -1;
+            this.overallProgressBar.Location = new System.Drawing.Point(34, 182);
+            this.overallProgressBar.Margin = new System.Windows.Forms.Padding(0);
+            this.overallProgressBar.MarqueeAnimationSpeed = 2000;
+            this.overallProgressBar.Name = "overallProgressBar";
+            this.overallProgressBar.OuterColor = System.Drawing.Color.Gray;
+            this.overallProgressBar.OuterMargin = -25;
+            this.overallProgressBar.OuterWidth = 26;
+            this.overallProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.overallProgressBar.ProgressWidth = 25;
+            this.overallProgressBar.SecondaryFont = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.overallProgressBar.Size = new System.Drawing.Size(178, 171);
+            this.overallProgressBar.StartAngle = 270;
+            this.overallProgressBar.SubscriptColor = System.Drawing.Color.MidnightBlue;
+            this.overallProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(-35, -50, 0, 0);
+            this.overallProgressBar.SubscriptText = "75";
+            this.overallProgressBar.SuperscriptColor = System.Drawing.Color.MidnightBlue;
+            this.overallProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(-7, 3, 0, 0);
+            this.overallProgressBar.SuperscriptText = "%";
+            this.overallProgressBar.TabIndex = 6;
+            this.overallProgressBar.Text = "Overall";
+            this.overallProgressBar.TextMargin = new System.Windows.Forms.Padding(13, 20, 0, 0);
+            this.overallProgressBar.Value = 68;
+            // 
+            // finishedProgressBar
+            // 
+            this.finishedProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.finishedProgressBar.AnimationSpeed = 500;
+            this.finishedProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.finishedProgressBar.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.finishedProgressBar.ForeColor = System.Drawing.Color.Black;
+            this.finishedProgressBar.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.finishedProgressBar.InnerMargin = 2;
+            this.finishedProgressBar.InnerWidth = -1;
+            this.finishedProgressBar.Location = new System.Drawing.Point(37, 386);
+            this.finishedProgressBar.Margin = new System.Windows.Forms.Padding(0);
+            this.finishedProgressBar.MarqueeAnimationSpeed = 2000;
+            this.finishedProgressBar.Name = "finishedProgressBar";
+            this.finishedProgressBar.OuterColor = System.Drawing.Color.Gray;
+            this.finishedProgressBar.OuterMargin = -25;
+            this.finishedProgressBar.OuterWidth = 26;
+            this.finishedProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.finishedProgressBar.ProgressWidth = 25;
+            this.finishedProgressBar.SecondaryFont = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.finishedProgressBar.Size = new System.Drawing.Size(178, 171);
+            this.finishedProgressBar.StartAngle = 270;
+            this.finishedProgressBar.SubscriptColor = System.Drawing.Color.MidnightBlue;
+            this.finishedProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(-40, -50, 0, 0);
+            this.finishedProgressBar.SubscriptText = "75";
+            this.finishedProgressBar.SuperscriptColor = System.Drawing.Color.MidnightBlue;
+            this.finishedProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(-10, 3, 0, 0);
+            this.finishedProgressBar.SuperscriptText = "%";
+            this.finishedProgressBar.TabIndex = 7;
+            this.finishedProgressBar.Text = "Finished";
+            this.finishedProgressBar.TextMargin = new System.Windows.Forms.Padding(13, 20, 0, 0);
+            this.finishedProgressBar.Value = 68;
+            // 
+            // remainingProgressBar
+            // 
+            this.remainingProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.remainingProgressBar.AnimationSpeed = 500;
+            this.remainingProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.remainingProgressBar.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.remainingProgressBar.ForeColor = System.Drawing.Color.Black;
+            this.remainingProgressBar.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.remainingProgressBar.InnerMargin = 2;
+            this.remainingProgressBar.InnerWidth = -1;
+            this.remainingProgressBar.Location = new System.Drawing.Point(250, 386);
+            this.remainingProgressBar.Margin = new System.Windows.Forms.Padding(0);
+            this.remainingProgressBar.MarqueeAnimationSpeed = 2000;
+            this.remainingProgressBar.Name = "remainingProgressBar";
+            this.remainingProgressBar.OuterColor = System.Drawing.Color.Gray;
+            this.remainingProgressBar.OuterMargin = -25;
+            this.remainingProgressBar.OuterWidth = 26;
+            this.remainingProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.remainingProgressBar.ProgressWidth = 25;
+            this.remainingProgressBar.SecondaryFont = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.remainingProgressBar.Size = new System.Drawing.Size(178, 171);
+            this.remainingProgressBar.StartAngle = 270;
+            this.remainingProgressBar.SubscriptColor = System.Drawing.Color.MidnightBlue;
+            this.remainingProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(-45, -50, 0, 0);
+            this.remainingProgressBar.SubscriptText = "75";
+            this.remainingProgressBar.SuperscriptColor = System.Drawing.Color.MidnightBlue;
+            this.remainingProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(-17, 3, 0, 0);
+            this.remainingProgressBar.SuperscriptText = "%";
+            this.remainingProgressBar.TabIndex = 8;
+            this.remainingProgressBar.Text = "Remaining";
+            this.remainingProgressBar.TextMargin = new System.Windows.Forms.Padding(13, 20, 0, 0);
+            this.remainingProgressBar.Value = 68;
+            // 
+            // efficiencyProgressBar
+            // 
+            this.efficiencyProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.efficiencyProgressBar.AnimationSpeed = 500;
+            this.efficiencyProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.efficiencyProgressBar.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.efficiencyProgressBar.ForeColor = System.Drawing.Color.Black;
+            this.efficiencyProgressBar.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.efficiencyProgressBar.InnerMargin = 2;
+            this.efficiencyProgressBar.InnerWidth = -1;
+            this.efficiencyProgressBar.Location = new System.Drawing.Point(250, 182);
+            this.efficiencyProgressBar.Margin = new System.Windows.Forms.Padding(0);
+            this.efficiencyProgressBar.MarqueeAnimationSpeed = 2000;
+            this.efficiencyProgressBar.Name = "efficiencyProgressBar";
+            this.efficiencyProgressBar.OuterColor = System.Drawing.Color.Gray;
+            this.efficiencyProgressBar.OuterMargin = -25;
+            this.efficiencyProgressBar.OuterWidth = 26;
+            this.efficiencyProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.efficiencyProgressBar.ProgressWidth = 25;
+            this.efficiencyProgressBar.SecondaryFont = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.efficiencyProgressBar.Size = new System.Drawing.Size(178, 171);
+            this.efficiencyProgressBar.StartAngle = 270;
+            this.efficiencyProgressBar.SubscriptColor = System.Drawing.Color.MidnightBlue;
+            this.efficiencyProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(-40, -50, 0, 0);
+            this.efficiencyProgressBar.SubscriptText = "75";
+            this.efficiencyProgressBar.SuperscriptColor = System.Drawing.Color.MidnightBlue;
+            this.efficiencyProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(-10, 3, 0, 0);
+            this.efficiencyProgressBar.SuperscriptText = "%";
+            this.efficiencyProgressBar.TabIndex = 9;
+            this.efficiencyProgressBar.Text = "Efficiency";
+            this.efficiencyProgressBar.TextMargin = new System.Windows.Forms.Padding(13, 20, 0, 0);
+            this.efficiencyProgressBar.Value = 68;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 820);
+            this.ClientSize = new System.Drawing.Size(1044, 820);
+            this.Controls.Add(this.statsBlock);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel4);
@@ -454,6 +716,8 @@
             this.panel3.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.statsBlock.ResumeLayout(false);
+            this.statsBlock.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -491,6 +755,18 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.GroupBox statsBlock;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button todayStats;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button monthStats;
+        private System.Windows.Forms.Button weekStats;
+        private System.Windows.Forms.Label hrLine;
+        private CircularProgressBar.CircularProgressBar overallProgressBar;
+        private CircularProgressBar.CircularProgressBar remainingProgressBar;
+        private CircularProgressBar.CircularProgressBar finishedProgressBar;
+        private CircularProgressBar.CircularProgressBar efficiencyProgressBar;
     }
 }
 
