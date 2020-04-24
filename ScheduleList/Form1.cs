@@ -213,9 +213,82 @@ namespace ScheduleList
             selectedDates++;
         }
 
-        private void label8_Click(object sender, EventArgs e)
+        private void button13_Click(object sender, EventArgs e)
         {
+            if (statsBlock.Visible)
+                statsBlock.Visible = false;
+            else
+                statsBlock.Visible = true;
+        }
 
+        private void todayStats_Click(object sender, EventArgs e)
+        {
+            todayStats.FlatAppearance.BorderSize = 3;
+            weekStats.FlatAppearance.BorderSize = 0;
+            monthStats.FlatAppearance.BorderSize = 0;
+            
+            overallProgressBar.SubscriptText = "10";
+            overallProgressBar.Value = 10;
+            overallProgressBar.Update();
+
+            efficiencyProgressBar.SubscriptText = "63";
+            efficiencyProgressBar.Value = 63;
+            efficiencyProgressBar.Update();
+
+
+            remainingProgressBar.SubscriptText = "90";
+            remainingProgressBar.Value = 90;
+            remainingProgressBar.Update();
+
+            finishedProgressBar.SubscriptText = "10";
+            finishedProgressBar.Value = 10;
+            finishedProgressBar.Update();
+        }
+
+        private void weekStats_Click(object sender, EventArgs e)
+        {
+            todayStats.FlatAppearance.BorderSize = 0;
+            weekStats.FlatAppearance.BorderSize = 3;
+            monthStats.FlatAppearance.BorderSize = 0;
+
+            overallProgressBar.SubscriptText = "25";
+            overallProgressBar.Value = 25;
+            overallProgressBar.Update();
+
+            efficiencyProgressBar.SubscriptText = "36";
+            efficiencyProgressBar.Value = 36;
+            efficiencyProgressBar.Update();
+
+            remainingProgressBar.SubscriptText = "50";
+            remainingProgressBar.Value = 50;
+            remainingProgressBar.Update();
+
+            finishedProgressBar.SubscriptText = "50";
+            finishedProgressBar.Value = 50;
+            finishedProgressBar.Update();
+        }
+
+        private void monthStats_Click(object sender, EventArgs e)
+        {
+            todayStats.FlatAppearance.BorderSize = 0;
+            weekStats.FlatAppearance.BorderSize = 0;
+            monthStats.FlatAppearance.BorderSize = 3;
+
+            overallProgressBar.SubscriptText = "100";
+            overallProgressBar.Value = 100;
+            overallProgressBar.Update();
+
+            overallProgressBar.SubscriptText = "100";
+            overallProgressBar.Value = 100;
+            overallProgressBar.Update();
+
+            efficiencyProgressBar.SubscriptText = "100";
+            efficiencyProgressBar.Value = 100;
+            efficiencyProgressBar.Update();
+
+            finishedProgressBar.SubscriptText = "0";
+            finishedProgressBar.Value = 0;
+            finishedProgressBar.Update();
         }
     }
 }
