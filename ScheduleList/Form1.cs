@@ -44,6 +44,10 @@ namespace ScheduleList
             panel6.Visible = false;
         }
 
+        private void label8_Click(object sender, EventArgs e)
+        {
+        }
+
         private void CleanControls()
         {
             radioButton1.Checked = false;
@@ -60,6 +64,10 @@ namespace ScheduleList
             panel7.Visible = false;
 
             controller.SayHello();
+        }
+        private void label_Click(object sender, EventArgs e)
+        {
+  
         }
 
         private void button10_Click(object sender, EventArgs e)
