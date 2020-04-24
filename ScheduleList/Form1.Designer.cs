@@ -43,6 +43,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.monthCalendar2 = new System.Windows.Forms.MonthCalendar();
             this.button11 = new System.Windows.Forms.Button();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
@@ -58,7 +59,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -265,9 +265,16 @@
             this.panel3.Size = new System.Drawing.Size(453, 464);
             this.panel3.TabIndex = 3;
             // 
+            // panel7
+            // 
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(450, 467);
+            this.panel7.TabIndex = 29;
+            // 
             // monthCalendar2
             // 
-            this.monthCalendar2.Location = new System.Drawing.Point(179, 197);
+            this.monthCalendar2.Location = new System.Drawing.Point(158, 197);
             this.monthCalendar2.Margin = new System.Windows.Forms.Padding(12, 11, 12, 11);
             this.monthCalendar2.Name = "monthCalendar2";
             this.monthCalendar2.TabIndex = 28;
@@ -422,13 +429,6 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(10, 10);
             this.panel6.TabIndex = 5;
-            // 
-            // panel7
-            // 
-            this.panel7.Location = new System.Drawing.Point(3, 3);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(450, 467);
-            this.panel7.TabIndex = 29;
             // 
             // Form1
             // 
