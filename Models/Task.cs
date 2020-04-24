@@ -11,17 +11,23 @@ namespace Models
     public class Task
     {
         private int _id;
-        private DateTime _date;   //only the time is needed here
+        private string _time;   //format -> hh.mm.ss
         private string _title;
         private string _subtitle;
         private string _description;
         private string _status;
         private int _priority;
+        private int _day_id;
 
-        public DateTime Date
+        public int Id
         {
-            get { return _date; }
-            set { _date = value; }
+            get { return _id; }
+            set { _id = value; }
+        }
+        public string Time
+        {
+            get { return _time; }
+            set { _time = value; }
         }
 
         public string Title
@@ -52,6 +58,12 @@ namespace Models
         {
             get { return _priority; }
             set { _priority = value; }
+        }
+
+        public int DayId
+        {
+            get { return _day_id; }
+            set { _day_id = value; }
         }
     }
 }

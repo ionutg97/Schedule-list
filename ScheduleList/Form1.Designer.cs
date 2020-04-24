@@ -59,6 +59,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+
+          //
+          //view Sattistics page
+          //
             this.button13 = new System.Windows.Forms.Button();
             this.statsBlock = new System.Windows.Forms.GroupBox();
             this.todayStats = new System.Windows.Forms.Button();
@@ -71,6 +75,7 @@
             this.finishedProgressBar = new CircularProgressBar.CircularProgressBar();
             this.remainingProgressBar = new CircularProgressBar.CircularProgressBar();
             this.efficiencyProgressBar = new CircularProgressBar.CircularProgressBar();
+
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -146,6 +151,7 @@
             this.label8.Size = new System.Drawing.Size(80, 28);
             this.label8.TabIndex = 2;
             this.label8.Text = "label8";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // panel4
             // 
@@ -444,6 +450,7 @@
             this.panel6.Size = new System.Drawing.Size(10, 10);
             this.panel6.TabIndex = 5;
             // 
+
             // button13
             // 
             this.button13.Location = new System.Drawing.Point(238, 20);

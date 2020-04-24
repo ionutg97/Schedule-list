@@ -58,6 +58,8 @@ namespace ScheduleList
             CleanControls();
             panel6.Visible = true;
             panel7.Visible = false;
+
+            controller.SayHello();
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -288,7 +290,5 @@ namespace ScheduleList
             finishedProgressBar.Value = 0;
             finishedProgressBar.Update();
         }
-
-       
     }
 }

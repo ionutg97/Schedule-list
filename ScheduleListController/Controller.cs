@@ -19,7 +19,7 @@ namespace ScheduleListController
         ///  This method was created to check if everything works well.
         ///  It connect view layer wiht controller layer.
         /// </summary>
-        public void sayHello()
+        public void SayHello()
         {
             _service.SayHello();
             Console.WriteLine("Hello from controller");
@@ -39,7 +39,7 @@ namespace ScheduleListController
 
             foreach(var day in days)
             {
-                Console.WriteLine("--->  " + day.Date + " " + day.Task_id);
+                Console.WriteLine("--->  " + day.Date);
             }
         }
 
@@ -54,9 +54,68 @@ namespace ScheduleListController
 
             foreach (var task in tasks)
             {
-                Console.WriteLine("--->  " + task.Date + " " + task.Title + " "+ task.Subtitle 
+                Console.WriteLine("--->  " + task.Time + " " + task.Title + " "+ task.Subtitle 
                     + " " + task.Description + " " + task.Status + " " + task.Priority);
             }
         }
-    } 
+
+        /// <summary>
+        ///  Halip Vasile Emanuel
+        ///  Call the method from the service layer.
+        ///  Create new Task.
+        /// </summary>
+        public void CreateNewTask(Task task)
+        {
+            _service.CreateNewTask(task);
+        }
+
+        /// <summary>
+        ///  Stan Dragos
+        ///  Get number of "completed" tasks.
+        /// </summary>
+        public int GetCompletedTaskNumbers()
+        {
+            return _service.GetCompletedTaskNumbers();
+        }
+        
+
+        /// <summary>
+        ///  Stan Dragos
+        ///  Get number of "in progress" tasks.
+        /// </summary>
+        public int GetInProgressTaskNumbers()
+        {
+            return _service.GetInProgressTaskNumbers();
+        }
+
+        /// <summary>
+        ///  Halip Vasile Emanuel
+        ///  Call the method from the service layer.
+        ///  Delete a task.
+        /// </summary>
+        public void DeleteTask()
+        {
+            _service.DeleteTask(null);
+        }
+
+        /// <summary>
+        ///  Stan Dragos
+        ///  Call the method from the service layer.
+        ///  Update a task by title, subtitle and description.
+        /// </summary>
+        public Task UpdateTaskDetails(Task task, string title, string subtitle, string description)
+        {
+            return _service.UpdateTaskDetails(task, title, subtitle, description);
+        }
+
+        /// <summary>
+        ///  Stan Dragos
+        ///  Call the method from the service layer.
+        ///  Update a task by status.
+        /// </summary>
+        public Task UpdateTaskStatus(Task task, string status)
+        {
+            return _service.UpdateTaskStatus(task, status);
+        }
+    }
 }
