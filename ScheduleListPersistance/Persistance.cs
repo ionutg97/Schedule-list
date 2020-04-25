@@ -480,6 +480,10 @@ namespace ScheduleListPersistance
             return task;
         }
 
+        /// <summary>
+        ///  Ciobanu Denis Marian
+        ///  Update Task by giving proprieties from view
+        /// </summary>
         public Task UpdateTaskFowView(Task task, string time, string title, string subtitle, string status, int priority)
         {
             

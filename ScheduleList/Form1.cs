@@ -294,6 +294,11 @@ namespace ScheduleList
             }
         }
 
+
+        /// <summary>
+        ///  Ciobanu Denis Marian
+        ///  Validate priority inputs
+        /// </summary>
         private bool RadioButtonsValidation()
         {
             if (this.radioButton1.Checked == false && radioButton2.Checked == false && radioButton3.Checked == false)
@@ -303,6 +308,10 @@ namespace ScheduleList
             return true;
         }
 
+        /// <summary>
+        ///  Ciobanu Denis Marian
+        ///  Validate Title and subtitle inputs
+        /// </summary>
         private bool TitleValidation()
         {
             if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text))
@@ -312,16 +321,28 @@ namespace ScheduleList
             return true;
         }
 
+        /// <summary>
+        ///  Ciobanu Denis Marian
+        ///  Validate if dates have been both selected inputs
+        /// </summary>
         private bool SelectdDatesValidator()
         {
             return selectedDates < 2 ? false : true;
         }
 
+        /// <summary>
+        ///  Ciobanu Denis Marian
+        ///  Check if end date is selected after start date
+        /// </summary>
         private bool IntervalValidator()
         {
             return endDate >= startDate ? true : false;
         }
 
+        /// <summary>
+        ///  Ciobanu Denis Marian
+        ///  Show dates on buttons
+        /// </summary>
         private void DisplayDateForButtons()
         {
             DateTime dt = DateTime.Now;
@@ -360,6 +381,10 @@ namespace ScheduleList
             this.button7.Text += dt.Day.ToString("00");
         }
 
+        /// <summary>
+        ///  Ciobanu Denis Marian
+        ///  Display start_date calendar and disable the other controlls
+        /// </summary>
         private void button9_Click(object sender, EventArgs e)
         {
             monthCalendar1.Visible = true;
@@ -370,6 +395,10 @@ namespace ScheduleList
             monthCalendar1.Enabled = true;
         }
 
+        /// <summary>
+        ///  Ciobanu Denis Marian
+        ///  Display end_date calendar and disable the other controlls
+        /// </summary>
         private void button11_Click(object sender, EventArgs e)
         {
             monthCalendar2.Visible = true;
@@ -380,6 +409,10 @@ namespace ScheduleList
             monthCalendar2.Enabled = true;
         }
 
+        /// <summary>
+        ///  Ciobanu Denis Marian
+        ///  Event for when end_date is selected
+        /// </summary>
         private void End_Date_Selected(object sender, DateRangeEventArgs e)
         {
             monthCalendar2.Visible = false;
@@ -392,6 +425,10 @@ namespace ScheduleList
             selectedDates++;
         }
 
+        /// <summary>
+        ///  Ciobanu Denis Marian
+        ///  Event for when start_date is selected
+        /// </summary>
         private void Start_Date_Selected(object sender, DateRangeEventArgs e)
         {
             monthCalendar1.Visible = false;
@@ -482,49 +519,16 @@ namespace ScheduleList
             finishedProgressBar.Update();
         }
 
-        public List<Task> getTasks (string date)
-        {
-
-            //date ar trebui folosit pe a aduce sub forma de lista toate taskurile din date-ul specificat
-
-            List<Task> lista = new List<Task>();
-            Task t1 = new Task();
-            t1.Title = "Primul";
-            t1.Subtitle = "Subtitlu1";
-            t1.Priority = 0;
-            t1.Status = "New";
-
-            Task t2 = new Task();
-            t2.Title = "Al doilea";
-            t2.Subtitle = "Subtitlu2";
-            t2.Priority = 1;
-            t2.Status = "New";
-
-            Task t3 = new Task();
-            t3.Title = "Al treilea";
-            t3.Subtitle = "Subtitlu3";
-            t3.Priority = 2;
-            t3.Status = "New";
-
-            Task t4 = new Task();
-            t4.Title = "Al patrulea";
-            t4.Subtitle = "Subtitlu4";
-            t4.Priority = 1;
-            t4.Status = "New";
-
-            lista.Add(t1);
-            lista.Add(t2);
-            lista.Add(t3);
-            lista.Add(t4);
-
-            return lista;
-        }
-
+        
         private void dataGridView_SelectionChanged(object sender, EventArgs e)
         {
             dataGridView1.ClearSelection();
         }
 
+        /// <summary>
+        ///  Ciobanu Denis Marian
+        ///  Event triggered after user press Enter to update task
+        /// </summary>
         private void cellValueChangedEvent(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.CurrentCell.Style.BackColor = Color.MediumPurple;
