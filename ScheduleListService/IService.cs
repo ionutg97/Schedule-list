@@ -10,6 +10,7 @@ namespace ScheduleListService
         void SayHello();
         List<Day> GetDays();
         List<Task> GetTasks();
+        List<Task> GetTasksForAGivenDate(string date);
 
         void CreateNewTask(Task task);
 
@@ -20,5 +21,7 @@ namespace ScheduleListService
         void DeleteTask(Task task);
         Task UpdateTaskDetails(Task task, string title, string subtitle, string description);
         Task UpdateTaskStatus(Task task, string status);
+
+        Task UpdateTaskFowView(Task task, string time, string title, string subtitle, string status, int priority);
     }
 }

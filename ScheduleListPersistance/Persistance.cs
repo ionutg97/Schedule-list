@@ -131,7 +131,8 @@ namespace ScheduleListPersistance
         {
             List<Task> tasks = new List<Task>();
 
-            string sql = "select t.time, d.date, t.title, t.subtitle, t.description, t.status, t.priority from tasks t join days d using(id) where d.date = @data";
+            // string sql = "select t.time, d.date, t.title, t.subtitle, t.description, t.status, t.priority from tasks t join days d using(id) where d.date = @date";
+            string sql = "select t.time, d.date, t.title, t.subtitle, t.description, t.status, t.priority from tasks t join days d on(d.id = t.day_id)  where d.date = @date;";
             var cmd = new MySqlCommand(sql, _connection);
             cmd.Parameters.AddWithValue("@date", date);
 
@@ -152,7 +153,7 @@ namespace ScheduleListPersistance
                     string status = rdr.GetString(5);
                     int priority = rdr.GetInt32(6);
 
-                    Task task = CreateNewTask(stringDate, title, subtitle, description, status, priority);
+                    Task task = CreateNewTask(time, title, subtitle, description, status, priority);
 
                     tasks.Add(task);
                 }
@@ -257,16 +258,17 @@ namespace ScheduleListPersistance
         /// </summary>
         public void DeleteTask(Task task)
         {
-            string sql = "delete from tasks where time=@time and title=@title and day_id=@day_id and description=@description";
+            //string sql = "delete from tasks where time=@time and title=@title and day_id=@day_id and description=@description";
 
+            string sql = "delete from tasks where time=@time and title=@title";
             try
             {
                 var cmd = new MySqlCommand(sql, _connection);
                 cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@time", task.Time);
                 cmd.Parameters.AddWithValue("@title", task.Title);
-                cmd.Parameters.AddWithValue("@day_id", task.DayId);
-                cmd.Parameters.AddWithValue("@description", task.Description);
+                //cmd.Parameters.AddWithValue("@day_id", task.DayId);
+                //cmd.Parameters.AddWithValue("@description", task.Description);
 
                 cmd.ExecuteNonQuery();
             }
@@ -468,6 +470,34 @@ namespace ScheduleListPersistance
                 cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@id", task.Id);
                 cmd.Parameters.AddWithValue("@status", status);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return task;
+        }
+
+        public Task UpdateTaskFowView(Task task, string time, string title, string subtitle, string status, int priority)
+        {
+            
+            string sql = "update tasks set time = @time, title=@title, subtitle=@subtitle, status = @status, priority = @priority where title = @old_title and time = @old_time and subtitle = @old_subtitle";
+
+            try
+            {
+                var cmd = new MySqlCommand(sql, _connection);
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@old_time", task.Time);
+                cmd.Parameters.AddWithValue("@old_title", task.Title);
+                cmd.Parameters.AddWithValue("@old_subtitle", task.Subtitle);
+
+                cmd.Parameters.AddWithValue("@time", time);
+                cmd.Parameters.AddWithValue("@title", title);
+                cmd.Parameters.AddWithValue("@subtitle", subtitle);
+                cmd.Parameters.AddWithValue("@status", status);
+                cmd.Parameters.AddWithValue("@priority", priority);
                 cmd.ExecuteNonQuery();
 
             }

@@ -88,6 +88,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{AFC089FE-542D-4D85-84D9-337AF8DF0264}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ScheduleListController\ScheduleListController.csproj">
       <Project>{606e6e6c-00f0-43a8-baf5-f3ffac4d6286}</Project>
       <Name>ScheduleListController</Name>

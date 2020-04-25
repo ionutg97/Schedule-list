@@ -24,5 +24,7 @@ namespace ScheduleListPersistance
 
         Task UpdateTaskDetails(Task task, string title, string subtitle, string description);
         Task UpdateTaskStatus(Task task, string status);
+
+        Task UpdateTaskFowView(Task task, string time, string title, string subtitle, string status, int priority);
     }
 }

@@ -91,5 +91,15 @@ namespace ScheduleListService
         {
             return _persistance.UpdateTaskStatus(task, status);
         }
+
+        public List<Task> GetTasksForAGivenDate(string date)
+        {
+            return _persistance.GetTasksForAGivenDate(date);
+        }
+
+        public Task UpdateTaskFowView(Task task, string time, string title, string subtitle, string status, int priority)
+        {
+            return _persistance.UpdateTaskFowView(task, time, title, subtitle, status, priority);
+        }
     }
 }

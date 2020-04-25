@@ -93,9 +93,9 @@ namespace ScheduleListController
         ///  Call the method from the service layer.
         ///  Delete a task.
         /// </summary>
-        public void DeleteTask()
+        public void DeleteTask(Task task)
         {
-            _service.DeleteTask(null);
+            _service.DeleteTask(task);
         }
 
         /// <summary>
@@ -116,6 +116,16 @@ namespace ScheduleListController
         public Task UpdateTaskStatus(Task task, string status)
         {
             return _service.UpdateTaskStatus(task, status);
+        }
+
+        public List<Task> GetTasksForAGivenDate(string date)
+        {
+            return _service.GetTasksForAGivenDate(date);
+        }
+
+        public Task UpdateTaskFowView(Task task, string time, string title, string subtitle, string status, int priority)
+        {
+            return _service.UpdateTaskFowView(task, time, title, subtitle, status, priority);
         }
     }
 }
