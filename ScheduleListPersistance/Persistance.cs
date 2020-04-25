@@ -131,7 +131,7 @@ namespace ScheduleListPersistance
         {
             List<Task> tasks = new List<Task>();
 
-            string sql = "select t.time, d.date, t.title, t.subtitle, t.description, t.status, t.priority from tasks t join days d using(id) where d.date = @data";
+            string sql = "select t.time, d.date, t.title, t.subtitle, t.description, t.status, t.priority from tasks t join days d on(d.id=t.day_id) where d.date = @data";
             var cmd = new MySqlCommand(sql, _connection);
             cmd.Parameters.AddWithValue("@date", date);
 
