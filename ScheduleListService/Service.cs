@@ -102,11 +102,6 @@ namespace ScheduleListService
             return _persistance.UpdateTaskFowView(task, time, title, subtitle, status, priority);
         }
 
-        public List<Task> GetTasksBetweenDates(string start, string end)
-        {
-            return _persistance.GetTasksBetweenDates(start, end);
-        }
-
         /// <summary>
         /// Stan Dragos
         /// Get all tasks between those 2 dates, calling function from the persistance layer
