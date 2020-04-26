@@ -455,8 +455,8 @@ namespace ScheduleList
             weekStats.FlatAppearance.BorderSize = 0;
             monthStats.FlatAppearance.BorderSize = 0;
             
-            overallProgressBar.SubscriptText = "10";
-            overallProgressBar.Value = 10;
+            overallProgressBar.SubscriptText = "15";
+            overallProgressBar.Value = 15;
             overallProgressBar.Update();
 
             efficiencyProgressBar.SubscriptText = "63";

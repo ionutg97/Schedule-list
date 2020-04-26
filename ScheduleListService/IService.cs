@@ -23,5 +23,7 @@ namespace ScheduleListService
         Task UpdateTaskStatus(Task task, string status);
 
         Task UpdateTaskFowView(Task task, string time, string title, string subtitle, string status, int priority);
+        decimal GetFinishedTasksPercent(string start, string end);
+        decimal GetEffiencyOfTasksPercent(string start, string end);
     }
 }

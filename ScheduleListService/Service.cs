@@ -101,5 +101,15 @@ namespace ScheduleListService
         {
             return _persistance.UpdateTaskFowView(task, time, title, subtitle, status, priority);
         }
+
+        public decimal GetFinishedTasksPercent(string start, string end)
+        {
+            return _persistance.GetFinishedTasksPercent(start, end);
+        }
+
+        public decimal GetEffiencyOfTasksPercent(string start, string end)
+        {
+            return _persistance.GetEffiencyOfTasksPercent(start, end);
+        }
     }
 }
