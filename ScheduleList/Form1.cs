@@ -141,20 +141,31 @@ namespace ScheduleList
 
             Button buttonSender = (Button)sender;
 
-
             DateTime dt = DateTime.Now;
             string year = dt.Year.ToString();
             string month;
-            if (dt.Month < 10)
+            int monthN;
+            string day = buttonSender.Text[4] + "" + buttonSender.Text[5];
+
+            if(day.StartsWith("0"))
             {
-                 month = "0" + dt.Month.ToString();
-            } else
+                monthN = dt.AddMonths(1).Month;
+            } 
+            else
             {
-                 month = dt.Month.ToString();
+                monthN = dt.Month;
             }
 
-            string day = buttonSender.Text[4] + "" + buttonSender.Text[5];
+            if (dt.Month < 10)
+            {
+                 month = "0" + monthN.ToString();
+            } else
+            {
+                 month = monthN.ToString();
+            }
+
             string date = day + "." + month + "." + year;
+            MessageBox.Show(date);
             selectedDate = date;
             List<Task> tasks = controller.GetTasksForAGivenDate(selectedDate);
 
