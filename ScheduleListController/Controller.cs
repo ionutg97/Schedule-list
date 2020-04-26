@@ -131,16 +131,17 @@ namespace ScheduleListController
         /// <summary>
         ///  Stan Dragos
         ///  Call the method from the service layer.
-        ///  Get finished tasks percent for a day interval.
+        ///  Ges finished tasks percent for a certain day interval.
         /// </summary>
         public decimal GetFinishedTasksPercent(string start, string end)
         {
             return _service.GetFinishedTasksPercent(start, end);
         }
+
         /// <summary>
         ///  Stan Dragos
         ///  Call the method from the service layer.
-        ///  Get efficiency percent for a day interval.
+        ///  Get efficiency percent for a certain day interval.
         /// </summary>
         public decimal GetEffiencyOfTasksPercent(string start, string end)
         {

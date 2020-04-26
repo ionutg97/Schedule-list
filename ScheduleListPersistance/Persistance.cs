@@ -482,129 +482,43 @@ namespace ScheduleListPersistance
 
         /// <summary>
         ///  Stan Dragos
-        ///  Get percent of finished tasks
+        ///  Get list of all tasks that are in between two dates
         /// </summary>
-        public decimal GetFinishedTasksPercent(string start, string end)
+        public List<Task> GetTasksBetweenDates(string start, string end)
         {
-            decimal total_tasks = 0;
-            decimal done_tasks = 0;
-            string sql1 = "select * from tasks t join days d on(d.id = t.day_id) where date between @start and @end;";
-            var cmd1 = new MySqlCommand(sql1, _connection);
-            cmd1.Parameters.AddWithValue("@start", start);
-            cmd1.Parameters.AddWithValue("@end", end);
+            List<Task> tasks = new List<Task>();
 
-            string sql2 = "select * from tasks t join days d on(d.id = t.day_id) where date between @start and @end and status=@status;";
-            var cmd2 = new MySqlCommand(sql2, _connection);
-            cmd2.Parameters.AddWithValue("@start", start);
-            cmd2.Parameters.AddWithValue("@end", end);
-            cmd2.Parameters.AddWithValue("@status", "done");
+            string sql = "select * from tasks t join days d on(d.id = t.day_id) where date between @start and @end;";
+            var cmd = new MySqlCommand(sql, _connection);
+            cmd.Parameters.AddWithValue("@start", start);
+            cmd.Parameters.AddWithValue("@end", end);
 
             try
             {
-                MySqlDataReader rdr1 = cmd1.ExecuteReader();
-                while (rdr1.Read())
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
                 {
-                    total_tasks++;
-                }
-                rdr1.Close();
-                MySqlDataReader rdr2 = cmd2.ExecuteReader();
-                while (rdr2.Read())
-                {
-                    done_tasks++;
-                }
-                rdr2.Close();
+                    string time = rdr.GetString(0);
+                    string stringDate = rdr.GetString(1);
+                    string title = rdr.GetString(2);
+                    string subtitle = rdr.GetString(3);
+                    string description = rdr.GetString(4);
+                    string status = rdr.GetString(5);
+                    int priority = rdr.GetInt32(6);
 
-                Console.WriteLine(total_tasks);
-                Console.WriteLine(done_tasks);
+                    Task task = CreateNewTask(time, title, subtitle, description, status, priority);
 
-            }
+                    tasks.Add(task);
+                }
+                rdr.Close();
+            }         
             catch (MySqlException e)
             {
                 Console.WriteLine(e.ToString());
             }
-            decimal final = (done_tasks / total_tasks) * 100;
-            return final;
+            return tasks;
         }
 
-        /// <summary>
-        ///  Stan Dragos
-        ///  Get effiency of tasks percent
-        /// </summary>
-        public decimal GetEffiencyOfTasksPercent(string start, string end)
-        {
-            decimal total_tasks = 0;
-            decimal done_tasks_prio1 = 0;
-            decimal done_tasks_prio2 = 0;
-            decimal done_tasks_prio3 = 0;
-            string sql1 = "select * from tasks t join days d on(d.id = t.day_id) where date between @start and @end;";
-            var cmd1 = new MySqlCommand(sql1, _connection);
-            cmd1.Parameters.AddWithValue("@start", start);
-            cmd1.Parameters.AddWithValue("@end", end);
-
-            // get all done tasks with priority 1
-            string sql2 = "select * from tasks t join days d on(d.id = t.day_id) where date between @start and @end and status=@status and priority=@prio;";
-            var cmd2 = new MySqlCommand(sql2, _connection);
-            cmd2.Parameters.AddWithValue("@start", start);
-            cmd2.Parameters.AddWithValue("@end", end);
-            cmd2.Parameters.AddWithValue("@status", "done");
-            cmd2.Parameters.AddWithValue("@prio", 1);
-
-            // get all done tasks with priority 2
-            string sql3 = "select * from tasks t join days d on(d.id = t.day_id) where date between @start and @end and status=@status and priority=@prio;";
-            var cmd3 = new MySqlCommand(sql2, _connection);
-            cmd3.Parameters.AddWithValue("@start", start);
-            cmd3.Parameters.AddWithValue("@end", end);
-            cmd3.Parameters.AddWithValue("@status", "done");
-            cmd3.Parameters.AddWithValue("@prio", 2);
-
-            // get all done tasks with priority 3
-            string sql4 = "select * from tasks t join days d on(d.id = t.day_id) where date between @start and @end and status=@status and priority=@prio;";
-            var cmd4 = new MySqlCommand(sql2, _connection);
-            cmd4.Parameters.AddWithValue("@start", start);
-            cmd4.Parameters.AddWithValue("@end", end);
-            cmd4.Parameters.AddWithValue("@status", "done");
-            cmd4.Parameters.AddWithValue("@prio", 3);
-
-            try
-            {
-                MySqlDataReader rdr1 = cmd1.ExecuteReader();
-                while (rdr1.Read())
-                {
-                    total_tasks++;
-                }
-                rdr1.Close();
-
-                MySqlDataReader rdr2 = cmd2.ExecuteReader();
-                while (rdr2.Read())
-                {
-                    done_tasks_prio1++;
-                }
-                rdr2.Close();
-
-                MySqlDataReader rdr3 = cmd3.ExecuteReader();
-                while (rdr3.Read())
-                {
-                    done_tasks_prio2++;
-                }
-                rdr3.Close();
-
-                MySqlDataReader rdr4 = cmd4.ExecuteReader();
-                while (rdr4.Read())
-                {
-                    done_tasks_prio3++;
-                }
-                rdr4.Close();
-            }
-            catch (MySqlException e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-            Console.WriteLine(total_tasks);
-            Console.WriteLine(done_tasks_prio1);
-            Console.WriteLine(done_tasks_prio2);
-            Console.WriteLine(done_tasks_prio3);
-            return (done_tasks_prio1*150 + done_tasks_prio2*100+done_tasks_prio3*50)/total_tasks;
-        }
 
         /// <summary>
         ///  Ciobanu Denis Marian
