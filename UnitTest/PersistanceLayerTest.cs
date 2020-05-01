@@ -2,6 +2,7 @@
 using Models;
 using Moq;
 using ScheduleListPersistance;
+using System.Collections.Generic;
 
 namespace UnitTest
 {
@@ -28,7 +29,7 @@ namespace UnitTest
         /// Test if CreateNewTask() method works as expected.
         /// </summary>
         [TestMethod]
-        public void TestMethod1()
+        public void TestCreateNewTaskMethod()
         {
             string time = "10:10:10";
             string title = "newTitle";
