@@ -342,7 +342,7 @@ namespace ScheduleListPersistance
         ///  Halip Vasile Emanuel
         ///  Create a new task with given values.
         /// </summary>
-        private Task CreateNewTask(string time, string title, string subtitle, string description, string status, int priority)
+        public Task CreateNewTask(string time, string title, string subtitle, string description, string status, int priority)
         {
             Task task = new Task();
             task.Time = time;

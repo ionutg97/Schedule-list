@@ -23,20 +23,36 @@ namespace UnitTest
             _persistance = Persistance.getInstanceOfMySqlConnection();
         }
 
-
+        /// <summary>
+        /// Halip Vasile Emanuel
+        /// Test if CreateNewTask() method works as expected.
+        /// </summary>
         [TestMethod]
         public void TestMethod1()
         {
+            string time = "10:10:10";
+            string title = "newTitle";
+            string subtitle = "newSubtitle";
+            string description = "newDescription";
+            string status = "newStatus";
+            int priority = 1;
+            
             Mock<Task> mockTask = new Mock<Task>();
-            mockTask.Setup(Time = time;
-            mockTask.Title = title;
-            mockTask.Subtitle = subtitle;
-            mockTask.Description = description;
-            mockTask.Status = status;
-            mockTask.Priority = priority;
+            mockTask.Object.Time = time;
+            mockTask.Object.Title = title;
+            mockTask.Object.Subtitle = subtitle;
+            mockTask.Object.Description = description;
+            mockTask.Object.Status = status;
+            mockTask.Object.Priority = priority;
 
-            //Assert.AreEqual(3, _persistance.CreateNewTask()));
+            Task realTask = _persistance.CreateNewTask(time, title, subtitle, description, status, priority);
 
+            Assert.AreEqual(mockTask.Object.Time, realTask.Time);
+            Assert.AreEqual(mockTask.Object.Title, realTask.Title);
+            Assert.AreEqual(mockTask.Object.Subtitle, realTask.Subtitle);
+            Assert.AreEqual(mockTask.Object.Description, realTask.Description);
+            Assert.AreEqual(mockTask.Object.Status, realTask.Status);
+            Assert.AreEqual(mockTask.Object.Priority, realTask.Priority);
         }
     }
 }

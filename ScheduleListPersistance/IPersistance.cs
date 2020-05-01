@@ -16,6 +16,8 @@ namespace ScheduleListPersistance
 
         void CreateNewTask(Task task);
 
+        Task CreateNewTask(string time, string title, string subtitle, string description, string status, int priority);
+
         int GetCompletedTaskNumbers();
 
         int GetInProgressTaskNumbers();
