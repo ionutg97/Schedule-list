@@ -127,6 +127,10 @@ namespace ScheduleListPersistance
             return tasks;
         }
 
+        /// <summary>
+        ///  Halip Vasile Emanuel
+        ///  Get a list of task from db for a given date.
+        /// </summary>
         List<Task> IPersistance.GetTasksForAGivenDate(string date)
         {
             List<Task> tasks = new List<Task>();
@@ -168,8 +172,6 @@ namespace ScheduleListPersistance
 
         }
 
-
-
         /// <summary>
         ///  Halip Vasile Emanuel
         ///  If the currentDate exist we can directly insert the task into db.
@@ -206,8 +208,6 @@ namespace ScheduleListPersistance
 
             try
             {
-
-
                 var cmd = new MySqlCommand(sql, _connection);
                 cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@date", currentDate);
@@ -378,34 +378,7 @@ namespace ScheduleListPersistance
 
         /// <summary>
         ///  Stan Dragos
-        ///  Get completed task number
-        /// </summary>
-        int IPersistance.GetCompletedTaskNumbers()
-        {
-            int number = 0;
-            string sql = "SELECT * FROM tasks where status = @status";
-            var cmd = new MySqlCommand(sql, _connection);
-            cmd.Parameters.AddWithValue("@status", "done");
-
-            try
-            {
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
-                {
-                    number++;
-                }
-                rdr.Close();
-            }
-            catch (MySqlException e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-            return number;
-        }
-
-        /// <summary>
-        ///  Stan Dragos
-        ///  Get in progress task number
+        ///  Get in progress task number.
         /// </summary>
         int IPersistance.GetInProgressTaskNumbers()
         {
@@ -432,7 +405,7 @@ namespace ScheduleListPersistance
 
         /// <summary>
         ///  Stan Dragos
-        ///  Update a task from db by title, subtitle and description
+        ///  Update a task from db by title, subtitle and description.
         /// </summary>
         public Task UpdateTaskDetails(Task task, string title, string subtitle, string description)
         {
@@ -458,7 +431,7 @@ namespace ScheduleListPersistance
 
         /// <summary>
         ///  Stan Dragos
-        ///  Update a task from db by status
+        ///  Update a task from db by status.
         /// </summary>
         public Task UpdateTaskStatus(Task task, string status)
         {
@@ -482,7 +455,7 @@ namespace ScheduleListPersistance
 
         /// <summary>
         ///  Stan Dragos
-        ///  Get list of all tasks that are in between two dates
+        ///  Get list of all tasks that are in between two dates.
         /// </summary>
         public List<Task> GetTasksBetweenDates(string start, string end)
         {
@@ -522,7 +495,7 @@ namespace ScheduleListPersistance
 
         /// <summary>
         ///  Ciobanu Denis Marian
-        ///  Update Task by giving proprieties from view
+        ///  Update Task by giving proprieties from view.
         /// </summary>
         public Task UpdateTaskFowView(Task task, string time, string title, string subtitle, string status, int priority)
         {
@@ -550,6 +523,33 @@ namespace ScheduleListPersistance
                 Console.WriteLine(e.ToString());
             }
             return task;
+        }
+
+        /// <summary>
+        ///  Stan Dragos
+        ///  Get completed task number
+        /// </summary>
+        int IPersistance.GetCompletedTaskNumbers()
+        {
+            int number = 0;
+            string sql = "SELECT * FROM tasks where status = @status";
+            var cmd = new MySqlCommand(sql, _connection);
+            cmd.Parameters.AddWithValue("@status", "done");
+
+            try
+            {
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    number++;
+                }
+                rdr.Close();
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return number;
         }
     } 
 }

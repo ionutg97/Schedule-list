@@ -118,6 +118,11 @@ namespace ScheduleListController
             return _service.UpdateTaskStatus(task, status);
         }
 
+        /// <summary>
+        ///  Halip Vasile Emanuel
+        ///  Call the method from the service layer.
+        ///  Get a list of tasks for a given date.
+        /// </summary>
         public List<Task> GetTasksForAGivenDate(string date)
         {
             return _service.GetTasksForAGivenDate(date);
