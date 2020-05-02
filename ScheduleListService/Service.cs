@@ -46,6 +46,10 @@ namespace ScheduleListService
             return _persistance.GetTasks();
         }
 
+        /// <summary>
+        ///  Halip Vasile Emanuel
+        ///  For test purpose only.
+        /// </summary>
         public void SayHello()
         {
             _persistance.SayHello();
@@ -56,6 +60,10 @@ namespace ScheduleListService
             CreateNewTask(task);
         }
 
+        /// <summary>
+        ///  Halip Vasile Emanuel
+        ///  Create a task object for internal usage.
+        /// </summary>
         private Task CreateNewTask(string time, string title, string subtitle, string description, string status, int priority)
         {
             Task task = new Task();
@@ -77,6 +85,11 @@ namespace ScheduleListService
             return _persistance.GetInProgressTaskNumbers();
         }
 
+        /// <summary>
+        ///  Halip Vasile Emanuel
+        //  Call the method from the persistance layer.
+        ///  Delete a task from db.
+        /// </summary>
         public void DeleteTask(Task task)
         {
             _persistance.DeleteTask(task);
@@ -92,6 +105,11 @@ namespace ScheduleListService
             return _persistance.UpdateTaskStatus(task, status);
         }
 
+        /// <summary>
+        ///  Halip Vasile Emanuel
+        //   Call the method from the persistance layer.
+        ///  Get a list of tasks for a given date.
+        /// </summary>
         public List<Task> GetTasksForAGivenDate(string date)
         {
             return _persistance.GetTasksForAGivenDate(date);
