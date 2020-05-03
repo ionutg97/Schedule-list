@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button13 = new System.Windows.Forms.Button();
@@ -70,6 +70,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.statsBlock = new System.Windows.Forms.GroupBox();
+            this.groupBoxInputDateStatistics = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.endDateStatistics = new System.Windows.Forms.Label();
+            this.startDateStatistics = new System.Windows.Forms.Label();
+            this.buttonViewStatistics = new System.Windows.Forms.Button();
             this.efficiencyProgressBar = new CircularProgressBar.CircularProgressBar();
             this.remainingProgressBar = new CircularProgressBar.CircularProgressBar();
             this.finishedProgressBar = new CircularProgressBar.CircularProgressBar();
@@ -80,12 +86,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.todayStats = new System.Windows.Forms.Button();
-            this.startDateStatistics = new System.Windows.Forms.Label();
-            this.endDateStatistics = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.buttonViewStatistics = new System.Windows.Forms.Button();
-            this.groupBoxInputDateStatistics = new System.Windows.Forms.GroupBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -303,39 +303,39 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.MediumPurple;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Times New Roman", 9F);
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.Snow;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Snow;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.MediumPurple;
             this.dataGridView1.Location = new System.Drawing.Point(15, 20);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.Snow;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Snow;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.MediumPurple;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.MediumPurple;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.Size = new System.Drawing.Size(419, 419);
             this.dataGridView1.TabIndex = 0;
@@ -584,6 +584,77 @@
             this.statsBlock.TabIndex = 0;
             this.statsBlock.TabStop = false;
             // 
+            // groupBoxInputDateStatistics
+            // 
+            this.groupBoxInputDateStatistics.Controls.Add(this.dateTimePicker3);
+            this.groupBoxInputDateStatistics.Controls.Add(this.dateTimePicker2);
+            this.groupBoxInputDateStatistics.Controls.Add(this.endDateStatistics);
+            this.groupBoxInputDateStatistics.Controls.Add(this.startDateStatistics);
+            this.groupBoxInputDateStatistics.Location = new System.Drawing.Point(16, 134);
+            this.groupBoxInputDateStatistics.Name = "groupBoxInputDateStatistics";
+            this.groupBoxInputDateStatistics.Size = new System.Drawing.Size(422, 48);
+            this.groupBoxInputDateStatistics.TabIndex = 14;
+            this.groupBoxInputDateStatistics.TabStop = false;
+            this.groupBoxInputDateStatistics.Visible = false;
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.CustomFormat = "dd.MM.yyyy";
+            this.dateTimePicker3.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker3.Location = new System.Drawing.Point(284, 11);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(132, 34);
+            this.dateTimePicker3.TabIndex = 13;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.CalendarMonthBackground = System.Drawing.Color.MediumBlue;
+            this.dateTimePicker2.CustomFormat = "dd.MM.yyyy";
+            this.dateTimePicker2.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(71, 11);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(129, 34);
+            this.dateTimePicker2.TabIndex = 12;
+            // 
+            // endDateStatistics
+            // 
+            this.endDateStatistics.AutoSize = true;
+            this.endDateStatistics.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endDateStatistics.Location = new System.Drawing.Point(228, 15);
+            this.endDateStatistics.Name = "endDateStatistics";
+            this.endDateStatistics.Size = new System.Drawing.Size(49, 21);
+            this.endDateStatistics.TabIndex = 11;
+            this.endDateStatistics.Text = "End:";
+            // 
+            // startDateStatistics
+            // 
+            this.startDateStatistics.AutoSize = true;
+            this.startDateStatistics.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startDateStatistics.Location = new System.Drawing.Point(6, 15);
+            this.startDateStatistics.Name = "startDateStatistics";
+            this.startDateStatistics.Size = new System.Drawing.Size(59, 21);
+            this.startDateStatistics.TabIndex = 10;
+            this.startDateStatistics.Text = "Start:";
+            // 
+            // buttonViewStatistics
+            // 
+            this.buttonViewStatistics.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonViewStatistics.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.buttonViewStatistics.FlatAppearance.BorderSize = 3;
+            this.buttonViewStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonViewStatistics.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonViewStatistics.ForeColor = System.Drawing.Color.White;
+            this.buttonViewStatistics.Location = new System.Drawing.Point(181, 553);
+            this.buttonViewStatistics.Name = "buttonViewStatistics";
+            this.buttonViewStatistics.Size = new System.Drawing.Size(102, 40);
+            this.buttonViewStatistics.TabIndex = 6;
+            this.buttonViewStatistics.Text = "View";
+            this.buttonViewStatistics.UseVisualStyleBackColor = false;
+            this.buttonViewStatistics.Visible = false;
+            this.buttonViewStatistics.Click += new System.EventHandler(this.buttonViewStatistics_Click);
+            // 
             // efficiencyProgressBar
             // 
             this.efficiencyProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
@@ -799,82 +870,11 @@
             this.todayStats.UseWaitCursor = true;
             this.todayStats.Click += new System.EventHandler(this.todayStats_Click);
             // 
-            // startDateStatistics
-            // 
-            this.startDateStatistics.AutoSize = true;
-            this.startDateStatistics.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startDateStatistics.Location = new System.Drawing.Point(6, 15);
-            this.startDateStatistics.Name = "startDateStatistics";
-            this.startDateStatistics.Size = new System.Drawing.Size(59, 21);
-            this.startDateStatistics.TabIndex = 10;
-            this.startDateStatistics.Text = "Start:";
-            // 
-            // endDateStatistics
-            // 
-            this.endDateStatistics.AutoSize = true;
-            this.endDateStatistics.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endDateStatistics.Location = new System.Drawing.Point(228, 15);
-            this.endDateStatistics.Name = "endDateStatistics";
-            this.endDateStatistics.Size = new System.Drawing.Size(49, 21);
-            this.endDateStatistics.TabIndex = 11;
-            this.endDateStatistics.Text = "End:";
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.CalendarMonthBackground = System.Drawing.Color.MediumBlue;
-            this.dateTimePicker2.CustomFormat = "dd.MM.yyyy";
-            this.dateTimePicker2.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(71, 11);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(129, 34);
-            this.dateTimePicker2.TabIndex = 12;
-            // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.CustomFormat = "dd.MM.yyyy";
-            this.dateTimePicker3.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker3.Location = new System.Drawing.Point(284, 11);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(132, 34);
-            this.dateTimePicker3.TabIndex = 13;
-            // 
-            // buttonViewStatistics
-            // 
-            this.buttonViewStatistics.BackColor = System.Drawing.Color.MidnightBlue;
-            this.buttonViewStatistics.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.buttonViewStatistics.FlatAppearance.BorderSize = 3;
-            this.buttonViewStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonViewStatistics.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonViewStatistics.ForeColor = System.Drawing.Color.White;
-            this.buttonViewStatistics.Location = new System.Drawing.Point(181, 553);
-            this.buttonViewStatistics.Name = "buttonViewStatistics";
-            this.buttonViewStatistics.Size = new System.Drawing.Size(102, 40);
-            this.buttonViewStatistics.TabIndex = 6;
-            this.buttonViewStatistics.Text = "View";
-            this.buttonViewStatistics.UseVisualStyleBackColor = false;
-            this.buttonViewStatistics.Visible = false;
-            this.buttonViewStatistics.Click += new System.EventHandler(this.buttonViewStatistics_Click);
-            // 
-            // groupBoxInputDateStatistics
-            // 
-            this.groupBoxInputDateStatistics.Controls.Add(this.dateTimePicker3);
-            this.groupBoxInputDateStatistics.Controls.Add(this.dateTimePicker2);
-            this.groupBoxInputDateStatistics.Controls.Add(this.endDateStatistics);
-            this.groupBoxInputDateStatistics.Controls.Add(this.startDateStatistics);
-            this.groupBoxInputDateStatistics.Location = new System.Drawing.Point(16, 134);
-            this.groupBoxInputDateStatistics.Name = "groupBoxInputDateStatistics";
-            this.groupBoxInputDateStatistics.Size = new System.Drawing.Size(422, 48);
-            this.groupBoxInputDateStatistics.TabIndex = 14;
-            this.groupBoxInputDateStatistics.TabStop = false;
-            this.groupBoxInputDateStatistics.Visible = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1044, 820);
+            this.ClientSize = new System.Drawing.Size(1043, 820);
             this.Controls.Add(this.statsBlock);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel6);

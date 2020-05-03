@@ -137,6 +137,8 @@ namespace ScheduleListService
                     done++;
                 }
             }
+            if (count == 0)
+                return 0;
             decimal final = (int)(done / count * 100);
             return final;
         }
@@ -168,7 +170,9 @@ namespace ScheduleListService
                     done_tasks_prio3++;
                 }
             }
-            decimal final = (int)((done_tasks_prio1 * 150 + done_tasks_prio2 * 100 + done_tasks_prio3 * 50) / count);
+            if (count == 0)
+                return 0;
+            decimal final = (int)((done_tasks_prio1 * 100 + done_tasks_prio2 * 75 + done_tasks_prio3 * 50) / count);
             return final;
         }
     }

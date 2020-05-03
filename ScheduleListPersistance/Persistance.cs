@@ -461,7 +461,8 @@ namespace ScheduleListPersistance
         {
             List<Task> tasks = new List<Task>();
 
-            string sql = "select * from tasks t join days d on(d.id = t.day_id) where date between @start and @end;";
+            //string sql = "select * from tasks t join days d on(d.id = t.day_id) where date between @start and @end;";
+            string sql = "select * from tasks t join days d on(d.id = t.day_id) where STR_TO_DATE(date, \"%d.%m.%Y\") between STR_TO_DATE(@start, \"%d.%m.%Y\") and STR_TO_DATE(@end, \"%d.%m.%Y\");";  
             var cmd = new MySqlCommand(sql, _connection);
             cmd.Parameters.AddWithValue("@start", start);
             cmd.Parameters.AddWithValue("@end", end);

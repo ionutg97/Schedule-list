@@ -495,7 +495,7 @@ namespace ScheduleList
             finishedProgressBar.Value = resultFinished;
             finishedProgressBar.Update();
 
-            int resultOverall = (resultEfficiency + resultRemaining + resultFinished) / 3;
+            int resultOverall = (resultEfficiency  + resultFinished) / 2;
             overallProgressBar.SubscriptText = resultOverall.ToString();
             overallProgressBar.Value = resultOverall;
             overallProgressBar.Update();
@@ -536,7 +536,7 @@ namespace ScheduleList
             finishedProgressBar.Value = resultFinished;
             finishedProgressBar.Update();
 
-            int resultOverall = (resultEfficiency + resultRemaining + resultFinished) / 3;
+            int resultOverall = (resultEfficiency  + resultFinished) / 2;
             overallProgressBar.SubscriptText = resultOverall.ToString();
             overallProgressBar.Value = resultOverall;
             overallProgressBar.Update();
@@ -551,8 +551,8 @@ namespace ScheduleList
         {
            
             todayStats.FlatAppearance.BorderSize = 0;
-            weekStats.FlatAppearance.BorderSize = 3;
-            customStats.FlatAppearance.BorderSize = 0;
+            weekStats.FlatAppearance.BorderSize = 0;
+            customStats.FlatAppearance.BorderSize = 3;
 
             groupBoxInputDateStatistics.Visible = true;
             buttonViewStatistics.Visible = true;
@@ -572,7 +572,10 @@ namespace ScheduleList
             overallProgressBar.Value = 0;
 
         }
-
+        /// <summary>
+        /// Calculate statistics between two Date and verify if the start date is smaller then end date.
+        /// If input date was validated the border button will be green in other case the border button is red.
+        /// </summary>
         private void buttonViewStatistics_Click(object sender, EventArgs e)
         {
             var thisCustomStart = dateTimePicker2.Value.Date;
@@ -601,7 +604,7 @@ namespace ScheduleList
                 finishedProgressBar.Value = resultFinished;
                 finishedProgressBar.Update();
 
-                int resultOverall = (resultEfficiency + resultRemaining + resultFinished) / 3;
+                int resultOverall = (resultEfficiency  + resultFinished) / 2;
                 overallProgressBar.SubscriptText = resultOverall.ToString();
                 overallProgressBar.Value = resultOverall;
                 overallProgressBar.Update();
