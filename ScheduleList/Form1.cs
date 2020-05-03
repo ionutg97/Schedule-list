@@ -460,74 +460,116 @@ namespace ScheduleList
                 statsBlock.Visible = true;
         }
 
+        /// <summary>
+        /// Galan Ionut Andrei
+        /// Daily Statistics 
+        /// </summary>
         private void todayStats_Click(object sender, EventArgs e)
         {
+            DateTime baseDate = DateTime.Today;
+            var today = baseDate;
+            string date = Utils.ConvertDateTimeToString(today);
+
             todayStats.FlatAppearance.BorderSize = 3;
             weekStats.FlatAppearance.BorderSize = 0;
             monthStats.FlatAppearance.BorderSize = 0;
             
-            overallProgressBar.SubscriptText = "15";
-            overallProgressBar.Value = 15;
-            overallProgressBar.Update();
-
-            efficiencyProgressBar.SubscriptText = "63";
-            efficiencyProgressBar.Value = 63;
+            int resultEfficiency = (int)controller.GetEffiencyOfTasksPercent(date, date);
+            efficiencyProgressBar.SubscriptText = resultEfficiency.ToString();
+            efficiencyProgressBar.Value = resultEfficiency;
             efficiencyProgressBar.Update();
 
-
-            remainingProgressBar.SubscriptText = "90";
-            remainingProgressBar.Value = 90;
+            int resultFinished = (int)controller.GetFinishedTasksPercent(date, date);
+            int resultRemaining = (int)(100 - resultFinished);
+            remainingProgressBar.SubscriptText = resultRemaining.ToString();
+            remainingProgressBar.Value = resultRemaining;
             remainingProgressBar.Update();
 
-            finishedProgressBar.SubscriptText = "10";
-            finishedProgressBar.Value = 10;
+            finishedProgressBar.SubscriptText = resultFinished.ToString();
+            finishedProgressBar.Value = resultFinished;
             finishedProgressBar.Update();
-        }
 
+            int resultOverall = (resultEfficiency + resultRemaining + resultFinished) / 3;
+            overallProgressBar.SubscriptText = resultOverall.ToString();
+            overallProgressBar.Value = resultOverall;
+            overallProgressBar.Update();
+
+        }
+        /// <summary>
+        /// Galan Ionut Andrei
+        /// Weekly Statistics 
+        /// </summary>
         private void weekStats_Click(object sender, EventArgs e)
         {
+            DateTime baseDate = DateTime.Today;
+            var thisWeekStart = baseDate.AddDays(-(int)baseDate.DayOfWeek);
+            var thisWeekEnd = thisWeekStart.AddDays(7).AddSeconds(-1);
+
+            string thisWeekStartString = Utils.ConvertDateTimeToString(thisWeekStart);
+            string thisWeekEndString = Utils.ConvertDateTimeToString(thisWeekEnd);
+
             todayStats.FlatAppearance.BorderSize = 0;
             weekStats.FlatAppearance.BorderSize = 3;
             monthStats.FlatAppearance.BorderSize = 0;
 
-            overallProgressBar.SubscriptText = "25";
-            overallProgressBar.Value = 25;
-            overallProgressBar.Update();
-
-            efficiencyProgressBar.SubscriptText = "36";
-            efficiencyProgressBar.Value = 36;
+            int resultEfficiency = (int)controller.GetEffiencyOfTasksPercent(thisWeekStartString, thisWeekEndString);
+            efficiencyProgressBar.SubscriptText = resultEfficiency.ToString();
+            efficiencyProgressBar.Value = resultEfficiency;
             efficiencyProgressBar.Update();
 
-            remainingProgressBar.SubscriptText = "50";
-            remainingProgressBar.Value = 50;
+            int resultFinished = (int)controller.GetFinishedTasksPercent(thisWeekStartString, thisWeekEndString);
+            int resultRemaining = (int)(100 - resultFinished);
+            remainingProgressBar.SubscriptText = resultRemaining.ToString();
+            remainingProgressBar.Value = resultRemaining;
             remainingProgressBar.Update();
 
-            finishedProgressBar.SubscriptText = "50";
-            finishedProgressBar.Value = 50;
+            finishedProgressBar.SubscriptText = resultFinished.ToString();
+            finishedProgressBar.Value = resultFinished;
             finishedProgressBar.Update();
+
+            int resultOverall = (resultEfficiency + resultRemaining + resultFinished) / 3;
+            overallProgressBar.SubscriptText = resultOverall.ToString();
+            overallProgressBar.Value = resultOverall;
+            overallProgressBar.Update();
+
         }
 
+        /// <summary>
+        /// Galan Ionut Andrei
+        /// Monthly Statistics 
+        /// </summary>
         private void monthStats_Click(object sender, EventArgs e)
         {
+            //dateTime from input
+            var thisCustomStart = new DateTime();
+            var thiscustomEnd = new DateTime();
+
+            string thisCustomStartString = Utils.ConvertDateTimeToString(thisCustomStart);
+            string thisCustomEndString = Utils.ConvertDateTimeToString(thiscustomEnd);
+
             todayStats.FlatAppearance.BorderSize = 0;
-            weekStats.FlatAppearance.BorderSize = 0;
-            monthStats.FlatAppearance.BorderSize = 3;
+            weekStats.FlatAppearance.BorderSize = 3;
+            monthStats.FlatAppearance.BorderSize = 0;
 
-            overallProgressBar.SubscriptText = "100";
-            overallProgressBar.Value = 100;
-            overallProgressBar.Update();
-
-            overallProgressBar.SubscriptText = "100";
-            overallProgressBar.Value = 100;
-            overallProgressBar.Update();
-
-            efficiencyProgressBar.SubscriptText = "100";
-            efficiencyProgressBar.Value = 100;
+            int resultEfficiency = (int)controller.GetEffiencyOfTasksPercent(thisCustomStartString, thisCustomEndString);
+            efficiencyProgressBar.SubscriptText = resultEfficiency.ToString();
+            efficiencyProgressBar.Value = resultEfficiency;
             efficiencyProgressBar.Update();
 
-            finishedProgressBar.SubscriptText = "0";
-            finishedProgressBar.Value = 0;
+            int resultFinished = (int)controller.GetFinishedTasksPercent(thisCustomStartString, thisCustomEndString);
+            int resultRemaining = (int)(100 - resultFinished);
+            remainingProgressBar.SubscriptText = resultRemaining.ToString();
+            remainingProgressBar.Value = resultRemaining;
+            remainingProgressBar.Update();
+
+            finishedProgressBar.SubscriptText = resultFinished.ToString();
+            finishedProgressBar.Value = resultFinished;
             finishedProgressBar.Update();
+
+            int resultOverall = (resultEfficiency + resultRemaining + resultFinished) / 3;
+            overallProgressBar.SubscriptText = resultOverall.ToString();
+            overallProgressBar.Value = resultOverall;
+            overallProgressBar.Update();
         }
 
         
@@ -572,5 +614,7 @@ namespace ScheduleList
                 MessageBox.Show("Task sucessfully updated!");
             }
         }
+
+
     }
 }
