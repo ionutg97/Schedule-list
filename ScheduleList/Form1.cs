@@ -52,8 +52,8 @@ namespace ScheduleList
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.ScrollBars = ScrollBars.Vertical;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            
-            
+
+
             dataGridView1.MouseClick += new MouseEventHandler(dataGridView_MouseClick);
         }
 
@@ -69,7 +69,7 @@ namespace ScheduleList
 
                 int mousePosition = dataGridView1.HitTest(e.X, e.Y).RowIndex;
 
-                if(mousePosition >= 0)
+                if (mousePosition >= 0)
                 {
                     menu.Items.Add("Update").Name = "Update";
                     menu.Items.Add("Delete").Name = "Delete";
@@ -93,7 +93,7 @@ namespace ScheduleList
             List<Task> tasks;
             time = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             title = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            
+
             tasks = controller.GetTasksForAGivenDate(selectedDate);
             Task selectedTask = new Task();
             foreach (Task t in tasks)
@@ -111,7 +111,7 @@ namespace ScheduleList
                     menu.Visible = false;
                     dataGridView1.CurrentCell.Style.BackColor = Color.White;
                     dataGridView1.CurrentCell.Style.ForeColor = Color.Blue;
-                    
+
                     break;
                 case "Delete":
                     menu.Visible = false;
@@ -147,10 +147,10 @@ namespace ScheduleList
             int monthN;
             string day = buttonSender.Text[4] + "" + buttonSender.Text[5];
 
-            if(day.StartsWith("0") && !(button2.Text.StartsWith("0")))
+            if (day.StartsWith("0") && !(button2.Text.StartsWith("0")))
             {
                 monthN = dt.AddMonths(1).Month;
-            } 
+            }
             else
             {
                 monthN = dt.Month;
@@ -158,10 +158,11 @@ namespace ScheduleList
 
             if (dt.Month < 10)
             {
-                 month = "0" + monthN.ToString();
-            } else
+                month = "0" + monthN.ToString();
+            }
+            else
             {
-                 month = monthN.ToString();
+                month = monthN.ToString();
             }
 
             string date = day + "." + month + "." + year;
@@ -179,13 +180,14 @@ namespace ScheduleList
             table.Columns.Add("Status");
             table.Columns.Add("Priority");
 
-            foreach(Task t in tasks) {
+            foreach (Task t in tasks)
+            {
                 string priority = "";
                 if (t.Priority == 0)
                 {
                     priority = "Low";
                 }
-                else if(t.Priority == 1)
+                else if (t.Priority == 1)
                 {
                     priority = "Medium";
                 }
@@ -234,7 +236,8 @@ namespace ScheduleList
                 panel6.Visible = true;
                 panel7.Visible = false;
 
-            } else
+            }
+            else
             {
                 addButtonSelected = false;
                 panel6.Visible = false;
@@ -277,11 +280,11 @@ namespace ScheduleList
                             else
                                 task.Priority = 1;
 
-                           controller.CreateNewTask(task);
+                            controller.CreateNewTask(task);
 
-                           MessageBox.Show("Succesfully added new task!");
-                           panel7.Visible = true;
-                           panel6.Visible = false;
+                            MessageBox.Show("Succesfully added new task!");
+                            panel7.Visible = true;
+                            panel6.Visible = false;
 
                         }
                         else
@@ -472,8 +475,11 @@ namespace ScheduleList
 
             todayStats.FlatAppearance.BorderSize = 3;
             weekStats.FlatAppearance.BorderSize = 0;
-            monthStats.FlatAppearance.BorderSize = 0;
-            
+            customStats.FlatAppearance.BorderSize = 0;
+
+            groupBoxInputDateStatistics.Visible = false;
+            buttonViewStatistics.Visible = false;
+
             int resultEfficiency = (int)controller.GetEffiencyOfTasksPercent(date, date);
             efficiencyProgressBar.SubscriptText = resultEfficiency.ToString();
             efficiencyProgressBar.Value = resultEfficiency;
@@ -510,7 +516,10 @@ namespace ScheduleList
 
             todayStats.FlatAppearance.BorderSize = 0;
             weekStats.FlatAppearance.BorderSize = 3;
-            monthStats.FlatAppearance.BorderSize = 0;
+            customStats.FlatAppearance.BorderSize = 0;
+
+            groupBoxInputDateStatistics.Visible = false;
+            buttonViewStatistics.Visible = false;
 
             int resultEfficiency = (int)controller.GetEffiencyOfTasksPercent(thisWeekStartString, thisWeekEndString);
             efficiencyProgressBar.SubscriptText = resultEfficiency.ToString();
@@ -538,41 +547,68 @@ namespace ScheduleList
         /// Galan Ionut Andrei
         /// Monthly Statistics 
         /// </summary>
-        private void monthStats_Click(object sender, EventArgs e)
+        private void customStats_Click(object sender, EventArgs e)
         {
-            //dateTime from input
-            var thisCustomStart = new DateTime();
-            var thiscustomEnd = new DateTime();
-
-            string thisCustomStartString = Utils.ConvertDateTimeToString(thisCustomStart);
-            string thisCustomEndString = Utils.ConvertDateTimeToString(thiscustomEnd);
-
+           
             todayStats.FlatAppearance.BorderSize = 0;
             weekStats.FlatAppearance.BorderSize = 3;
-            monthStats.FlatAppearance.BorderSize = 0;
+            customStats.FlatAppearance.BorderSize = 0;
 
-            int resultEfficiency = (int)controller.GetEffiencyOfTasksPercent(thisCustomStartString, thisCustomEndString);
-            efficiencyProgressBar.SubscriptText = resultEfficiency.ToString();
-            efficiencyProgressBar.Value = resultEfficiency;
-            efficiencyProgressBar.Update();
+            groupBoxInputDateStatistics.Visible = true;
+            buttonViewStatistics.Visible = true;
+            buttonViewStatistics.FlatAppearance.BorderColor = Color.Red;
+            buttonViewStatistics.Enabled = true;
 
-            int resultFinished = (int)controller.GetFinishedTasksPercent(thisCustomStartString, thisCustomEndString);
-            int resultRemaining = (int)(100 - resultFinished);
-            remainingProgressBar.SubscriptText = resultRemaining.ToString();
-            remainingProgressBar.Value = resultRemaining;
-            remainingProgressBar.Update();
+            efficiencyProgressBar.SubscriptText = "0";
+            efficiencyProgressBar.Value = 0;
 
-            finishedProgressBar.SubscriptText = resultFinished.ToString();
-            finishedProgressBar.Value = resultFinished;
-            finishedProgressBar.Update();
+            finishedProgressBar.SubscriptText = "0";
+            finishedProgressBar.Value = 0;
 
-            int resultOverall = (resultEfficiency + resultRemaining + resultFinished) / 3;
-            overallProgressBar.SubscriptText = resultOverall.ToString();
-            overallProgressBar.Value = resultOverall;
-            overallProgressBar.Update();
+            remainingProgressBar.SubscriptText = "0";
+            remainingProgressBar.Value = 0;
+
+            overallProgressBar.SubscriptText = "0";
+            overallProgressBar.Value = 0;
+
         }
 
-        
+        private void buttonViewStatistics_Click(object sender, EventArgs e)
+        {
+            var thisCustomStart = dateTimePicker2.Value.Date;
+            var thisCustomEnd = dateTimePicker3.Value.Date;
+
+
+            if (Utils.validateDate(thisCustomStart, thisCustomEnd))
+            {
+                string thisCustomStartString = Utils.ConvertDateTimeToString(thisCustomStart);
+                string thisCustomEndString = Utils.ConvertDateTimeToString(thisCustomEnd);
+
+                buttonViewStatistics.FlatAppearance.BorderColor = Color.Green;
+
+                int resultEfficiency = (int)controller.GetEffiencyOfTasksPercent(thisCustomStartString, thisCustomEndString);
+                efficiencyProgressBar.SubscriptText = resultEfficiency.ToString();
+                efficiencyProgressBar.Value = resultEfficiency;
+                efficiencyProgressBar.Update();
+
+                int resultFinished = (int)controller.GetFinishedTasksPercent(thisCustomStartString, thisCustomEndString);
+                int resultRemaining = (int)(100 - resultFinished);
+                remainingProgressBar.SubscriptText = resultRemaining.ToString();
+                remainingProgressBar.Value = resultRemaining;
+                remainingProgressBar.Update();
+
+                finishedProgressBar.SubscriptText = resultFinished.ToString();
+                finishedProgressBar.Value = resultFinished;
+                finishedProgressBar.Update();
+
+                int resultOverall = (resultEfficiency + resultRemaining + resultFinished) / 3;
+                overallProgressBar.SubscriptText = resultOverall.ToString();
+                overallProgressBar.Value = resultOverall;
+                overallProgressBar.Update();
+            }
+        }
+
+
         private void dataGridView_SelectionChanged(object sender, EventArgs e)
         {
             dataGridView1.ClearSelection();
@@ -614,7 +650,5 @@ namespace ScheduleList
                 MessageBox.Show("Task sucessfully updated!");
             }
         }
-
-
     }
 }

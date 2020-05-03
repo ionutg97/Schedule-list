@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button13 = new System.Windows.Forms.Button();
@@ -75,11 +75,17 @@
             this.finishedProgressBar = new CircularProgressBar.CircularProgressBar();
             this.overallProgressBar = new CircularProgressBar.CircularProgressBar();
             this.hrLine = new System.Windows.Forms.Label();
-            this.monthStats = new System.Windows.Forms.Button();
+            this.customStats = new System.Windows.Forms.Button();
             this.weekStats = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.todayStats = new System.Windows.Forms.Button();
+            this.startDateStatistics = new System.Windows.Forms.Label();
+            this.endDateStatistics = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.buttonViewStatistics = new System.Windows.Forms.Button();
+            this.groupBoxInputDateStatistics = new System.Windows.Forms.GroupBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -88,6 +94,7 @@
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.statsBlock.SuspendLayout();
+            this.groupBoxInputDateStatistics.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -296,39 +303,39 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.MediumPurple;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 9F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Snow;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Times New Roman", 9F);
+            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.Snow;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle22;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.MediumPurple;
             this.dataGridView1.Location = new System.Drawing.Point(15, 20);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Snow;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.Snow;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.MediumPurple;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.MediumPurple;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle24;
             this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.Size = new System.Drawing.Size(419, 419);
             this.dataGridView1.TabIndex = 0;
@@ -555,16 +562,19 @@
             // statsBlock
             // 
             this.statsBlock.BackColor = System.Drawing.Color.MidnightBlue;
+            this.statsBlock.Controls.Add(this.groupBoxInputDateStatistics);
+            this.statsBlock.Controls.Add(this.buttonViewStatistics);
             this.statsBlock.Controls.Add(this.efficiencyProgressBar);
             this.statsBlock.Controls.Add(this.remainingProgressBar);
             this.statsBlock.Controls.Add(this.finishedProgressBar);
             this.statsBlock.Controls.Add(this.overallProgressBar);
             this.statsBlock.Controls.Add(this.hrLine);
-            this.statsBlock.Controls.Add(this.monthStats);
+            this.statsBlock.Controls.Add(this.customStats);
             this.statsBlock.Controls.Add(this.weekStats);
             this.statsBlock.Controls.Add(this.label5);
             this.statsBlock.Controls.Add(this.label2);
             this.statsBlock.Controls.Add(this.todayStats);
+            this.statsBlock.Cursor = System.Windows.Forms.Cursors.Default;
             this.statsBlock.ForeColor = System.Drawing.Color.Cornsilk;
             this.statsBlock.Location = new System.Drawing.Point(526, 205);
             this.statsBlock.Margin = new System.Windows.Forms.Padding(0);
@@ -573,7 +583,6 @@
             this.statsBlock.Size = new System.Drawing.Size(453, 603);
             this.statsBlock.TabIndex = 0;
             this.statsBlock.TabStop = false;
-            this.statsBlock.UseWaitCursor = true;
             // 
             // efficiencyProgressBar
             // 
@@ -714,27 +723,27 @@
             // hrLine
             // 
             this.hrLine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.hrLine.Location = new System.Drawing.Point(0, 149);
+            this.hrLine.Location = new System.Drawing.Point(0, 129);
             this.hrLine.Name = "hrLine";
             this.hrLine.Size = new System.Drawing.Size(447, 2);
             this.hrLine.TabIndex = 5;
             this.hrLine.UseWaitCursor = true;
             // 
-            // monthStats
+            // customStats
             // 
-            this.monthStats.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.monthStats.FlatAppearance.BorderSize = 0;
-            this.monthStats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.monthStats.Font = new System.Drawing.Font("Lucida Sans Unicode", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.monthStats.Location = new System.Drawing.Point(335, 94);
-            this.monthStats.Margin = new System.Windows.Forms.Padding(0);
-            this.monthStats.Name = "monthStats";
-            this.monthStats.Size = new System.Drawing.Size(93, 44);
-            this.monthStats.TabIndex = 4;
-            this.monthStats.Text = "Month";
-            this.monthStats.UseVisualStyleBackColor = false;
-            this.monthStats.UseWaitCursor = true;
-            this.monthStats.Click += new System.EventHandler(this.monthStats_Click);
+            this.customStats.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.customStats.FlatAppearance.BorderSize = 0;
+            this.customStats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customStats.Font = new System.Drawing.Font("Lucida Sans Unicode", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customStats.Location = new System.Drawing.Point(335, 77);
+            this.customStats.Margin = new System.Windows.Forms.Padding(0);
+            this.customStats.Name = "customStats";
+            this.customStats.Size = new System.Drawing.Size(93, 44);
+            this.customStats.TabIndex = 4;
+            this.customStats.Text = "Custom";
+            this.customStats.UseVisualStyleBackColor = false;
+            this.customStats.UseWaitCursor = true;
+            this.customStats.Click += new System.EventHandler(this.customStats_Click);
             // 
             // weekStats
             // 
@@ -742,7 +751,7 @@
             this.weekStats.FlatAppearance.BorderSize = 0;
             this.weekStats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.weekStats.Font = new System.Drawing.Font("Lucida Sans Unicode", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.weekStats.Location = new System.Drawing.Point(184, 94);
+            this.weekStats.Location = new System.Drawing.Point(181, 76);
             this.weekStats.Margin = new System.Windows.Forms.Padding(0);
             this.weekStats.Name = "weekStats";
             this.weekStats.Size = new System.Drawing.Size(93, 44);
@@ -756,7 +765,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(30, 52);
+            this.label5.Location = new System.Drawing.Point(30, 46);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(212, 21);
             this.label5.TabIndex = 2;
@@ -767,7 +776,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(30, 22);
+            this.label2.Location = new System.Drawing.Point(30, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 21);
             this.label2.TabIndex = 1;
@@ -780,7 +789,7 @@
             this.todayStats.FlatAppearance.BorderSize = 3;
             this.todayStats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.todayStats.Font = new System.Drawing.Font("Lucida Sans Unicode", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.todayStats.Location = new System.Drawing.Point(37, 94);
+            this.todayStats.Location = new System.Drawing.Point(34, 77);
             this.todayStats.Margin = new System.Windows.Forms.Padding(0);
             this.todayStats.Name = "todayStats";
             this.todayStats.Size = new System.Drawing.Size(93, 44);
@@ -789,6 +798,77 @@
             this.todayStats.UseVisualStyleBackColor = false;
             this.todayStats.UseWaitCursor = true;
             this.todayStats.Click += new System.EventHandler(this.todayStats_Click);
+            // 
+            // startDateStatistics
+            // 
+            this.startDateStatistics.AutoSize = true;
+            this.startDateStatistics.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startDateStatistics.Location = new System.Drawing.Point(6, 15);
+            this.startDateStatistics.Name = "startDateStatistics";
+            this.startDateStatistics.Size = new System.Drawing.Size(59, 21);
+            this.startDateStatistics.TabIndex = 10;
+            this.startDateStatistics.Text = "Start:";
+            // 
+            // endDateStatistics
+            // 
+            this.endDateStatistics.AutoSize = true;
+            this.endDateStatistics.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endDateStatistics.Location = new System.Drawing.Point(228, 15);
+            this.endDateStatistics.Name = "endDateStatistics";
+            this.endDateStatistics.Size = new System.Drawing.Size(49, 21);
+            this.endDateStatistics.TabIndex = 11;
+            this.endDateStatistics.Text = "End:";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.CalendarMonthBackground = System.Drawing.Color.MediumBlue;
+            this.dateTimePicker2.CustomFormat = "dd.MM.yyyy";
+            this.dateTimePicker2.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(71, 11);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(129, 34);
+            this.dateTimePicker2.TabIndex = 12;
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.CustomFormat = "dd.MM.yyyy";
+            this.dateTimePicker3.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker3.Location = new System.Drawing.Point(284, 11);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(132, 34);
+            this.dateTimePicker3.TabIndex = 13;
+            // 
+            // buttonViewStatistics
+            // 
+            this.buttonViewStatistics.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonViewStatistics.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.buttonViewStatistics.FlatAppearance.BorderSize = 3;
+            this.buttonViewStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonViewStatistics.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonViewStatistics.ForeColor = System.Drawing.Color.White;
+            this.buttonViewStatistics.Location = new System.Drawing.Point(181, 553);
+            this.buttonViewStatistics.Name = "buttonViewStatistics";
+            this.buttonViewStatistics.Size = new System.Drawing.Size(102, 40);
+            this.buttonViewStatistics.TabIndex = 6;
+            this.buttonViewStatistics.Text = "View";
+            this.buttonViewStatistics.UseVisualStyleBackColor = false;
+            this.buttonViewStatistics.Visible = false;
+            this.buttonViewStatistics.Click += new System.EventHandler(this.buttonViewStatistics_Click);
+            // 
+            // groupBoxInputDateStatistics
+            // 
+            this.groupBoxInputDateStatistics.Controls.Add(this.dateTimePicker3);
+            this.groupBoxInputDateStatistics.Controls.Add(this.dateTimePicker2);
+            this.groupBoxInputDateStatistics.Controls.Add(this.endDateStatistics);
+            this.groupBoxInputDateStatistics.Controls.Add(this.startDateStatistics);
+            this.groupBoxInputDateStatistics.Location = new System.Drawing.Point(16, 134);
+            this.groupBoxInputDateStatistics.Name = "groupBoxInputDateStatistics";
+            this.groupBoxInputDateStatistics.Size = new System.Drawing.Size(422, 48);
+            this.groupBoxInputDateStatistics.TabIndex = 14;
+            this.groupBoxInputDateStatistics.TabStop = false;
+            this.groupBoxInputDateStatistics.Visible = false;
             // 
             // Form1
             // 
@@ -819,6 +899,8 @@
             this.panel5.PerformLayout();
             this.statsBlock.ResumeLayout(false);
             this.statsBlock.PerformLayout();
+            this.groupBoxInputDateStatistics.ResumeLayout(false);
+            this.groupBoxInputDateStatistics.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -861,7 +943,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button todayStats;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button monthStats;
+        private System.Windows.Forms.Button customStats;
         private System.Windows.Forms.Button weekStats;
         private System.Windows.Forms.Label hrLine;
         private CircularProgressBar.CircularProgressBar overallProgressBar;
@@ -873,6 +955,12 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label endDateStatistics;
+        private System.Windows.Forms.Label startDateStatistics;
+        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Button buttonViewStatistics;
+        private System.Windows.Forms.GroupBox groupBoxInputDateStatistics;
     }
 }
 

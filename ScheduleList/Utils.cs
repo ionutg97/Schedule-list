@@ -28,5 +28,14 @@ namespace ScheduleList
 
             return dateFormat;
         }
+
+        public static Boolean validateDate(DateTime start, DateTime end)
+        {
+            if (start < end)
+                return true;
+            else
+                return false;
+        }
+
     }
 }
