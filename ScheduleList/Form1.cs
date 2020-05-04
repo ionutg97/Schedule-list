@@ -147,7 +147,7 @@ namespace ScheduleList
             int monthN;
             string day = buttonSender.Text[4] + "" + buttonSender.Text[5];
 
-            if (day.StartsWith("0") && !(button2.Text.StartsWith("0")))
+            if (day.StartsWith("0") && !(button2.Text[4].ToString().Equals("0")))
             {
                 monthN = dt.AddMonths(1).Month;
             }
