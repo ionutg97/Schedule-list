@@ -16,9 +16,6 @@ namespace UnitTest
 
         private IPersistance _persistance;
 
-        /// <summary>
-        /// 
-        /// </summary>
         public PersistanceLayerTest()
         {
             _persistance = Persistance.getInstanceOfMySqlConnection();
@@ -48,7 +45,6 @@ namespace UnitTest
 
             Task realTask = _persistance.CreateNewTask(time, title, subtitle, description, status, priority);
 
-            Assert.AreEqual(mockTask.Object.Time, realTask.Time);
             Assert.AreEqual(mockTask.Object.Title, realTask.Title);
             Assert.AreEqual(mockTask.Object.Subtitle, realTask.Subtitle);
             Assert.AreEqual(mockTask.Object.Description, realTask.Description);

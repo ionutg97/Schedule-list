@@ -26,5 +26,13 @@ namespace ScheduleListService
       
         decimal GetFinishedTasksPercent(string start, string end);
         decimal GetEffiencyOfTasksPercent(string start, string end);
+
+        DateTime ConvertStringToDate(string stringDate);
+
+        Task CreateNewTask(string time, string title, string subtitle, string description, string status, int priority);
+
+        decimal CalculateEffiencyOfTasksPercent(List<Task> tasks);
+
+        decimal CalcualteFinishedTaskPercent(List<Task> allTasksBetweenDays);
     }
 }
