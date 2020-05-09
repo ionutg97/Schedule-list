@@ -1,8 +1,21 @@
-﻿using System;
-using System.Collections;
+﻿/**************************************************************************
+ *                                                                        *
+ *  File:        ServiceLayerTest.cs                                      *
+ *  Copyright:   (c) 2019-2020, Halip Vasile Emanuel                      *
+ *  Description: Task Shedule - Windows Form Program                      *
+ *                                                                        *
+ *  This program is free software; you can redistribute it and/or modify  *
+ *  it under the terms of the GNU General Public License as published by  *
+ *  the Free Software Foundation. This program is distributed in the      *
+ *  hope that it will be useful, but WITHOUT ANY WARRANTY; without even   *
+ *  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR   *
+ *  PURPOSE. See the GNU General Public License for more details.         *
+ *                                                                        *
+ **************************************************************************/
+
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Models;
 using Moq;
@@ -39,6 +52,18 @@ namespace UnitTest
 
         /// <summary>
         /// Halip Vasile Emanuel
+        /// Test if ConvertStringToDate() method is not null.
+        /// </summary>
+        [TestMethod]
+        public void TestIfStringToDateConvertMethodIsNotNull()
+        {
+            String dateString = "1/5/2020 12:00:00 AM";
+            DateTime actualResult = _serviceInstance.ConvertStringToDate(dateString);
+            Assert.IsNotNull(actualResult.ToString());
+        }
+
+        /// <summary>
+        /// Halip Vasile Emanuel
         /// Test if CreateNewTask() method works as expected.
         /// </summary>
         [TestMethod]
@@ -70,6 +95,25 @@ namespace UnitTest
 
         /// <summary>
         /// Halip Vasile Emanuel
+        /// Test if returned object by CreateNewTask() method is not null.
+        /// </summary>
+        [TestMethod]
+        public void TestIfCreateNewTaskIsNotNull()
+        {
+            string time = "10:10:10";
+            string title = "newTitle";
+            string subtitle = "newSubtitle";
+            string description = "newDescription";
+            string status = "newStatus";
+            int priority = 1;
+
+            Task realTask = _serviceInstance.CreateNewTask(time, title, subtitle, description, status, priority);
+
+            Assert.IsNotNull(realTask);
+        }
+
+        /// <summary>
+        /// Halip Vasile Emanuel
         /// Test if CalculateEffiencyOfTasksPercent() method works as expected.
         /// </summary>
         [TestMethod]
@@ -79,6 +123,31 @@ namespace UnitTest
             decimal expectedResult = CalculateEffiencyOfTasksPercent(tasks);
             decimal actualResult = _serviceInstance.CalculateEffiencyOfTasksPercent(tasks);
             Assert.AreEqual(expectedResult, actualResult);
+        }
+
+
+        /// <summary>
+        /// Halip Vasile Emanuel
+        /// Test if CalculateEffiencyOfTasksPercent() method returns 0 for an given empty array.
+        /// </summary>
+        [TestMethod]
+        public void TestCalculateEffiencyOfTasksPercentMethodReturnZeroForAnEmptyArray()
+        {
+            List<Task> tasks = new List<Task>();
+            decimal actualResult = _serviceInstance.CalculateEffiencyOfTasksPercent(tasks);
+            Assert.AreEqual(0, actualResult);
+        }
+
+        /// <summary>
+        /// Halip Vasile Emanuel
+        /// Test if CalculateEffiencyOfTasksPercent() method is not null.
+        /// </summary>
+        [TestMethod]
+        public void TestCalculateEffiencyOfTasksPercentMethodIsNotNull()
+        {
+            List<Task> tasks = new List<Task>();
+            decimal actualResult = _serviceInstance.CalculateEffiencyOfTasksPercent(tasks);
+            Assert.IsNotNull(actualResult);
         }
 
         /// <summary>
@@ -92,6 +161,30 @@ namespace UnitTest
             decimal expectedResult = CalculateFinishedTasksPercent(tasks);
             decimal actualResult = _serviceInstance.CalcualteFinishedTaskPercent(tasks);
             Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        /// <summary>
+        /// Halip Vasile Emanuel
+        /// Test if GetFinishedTasksPercent() return  0 for a given empty array.
+        /// </summary>
+        [TestMethod]
+        public void TestIfGetFinishedTasksPercentMethodReturnZeroForAGivenEmptyArray()
+        {
+            List<Task> tasks = new List<Task>();
+            decimal actualResult = _serviceInstance.CalcualteFinishedTaskPercent(tasks);
+            Assert.AreEqual(0, actualResult);
+        }
+
+        /// <summary>
+        /// Halip Vasile Emanuel
+        /// Test if GetFinishedTasksPercent() is not null.
+        /// </summary>
+        [TestMethod]
+        public void TestIfGetFinishedTasksPercentMethodIsNotNull()
+        {
+            List<Task> tasks = new List<Task>();
+            decimal actualResult = _serviceInstance.CalcualteFinishedTaskPercent(tasks);
+            Assert.IsNotNull(actualResult);
         }
 
         /// <summary>

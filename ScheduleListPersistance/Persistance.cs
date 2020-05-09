@@ -1,10 +1,26 @@
-﻿using Models;
+﻿/**************************************************************************
+ *                                                                        *
+ *  File:        Persistance.cs                                           *
+ *  Copyright:   (c) 2019-2020                                            *
+ *                Stan Dragos                                             *
+ *                Halip Vasile Emanuel                                    *
+ *                Ciobanu Denis Marian                                    *
+ *                Galan Ionut Andrei                                      *
+ *  Description: Task Shedule - Windows Form Program                      *
+ *                                                                        *
+ *  This program is free software; you can redistribute it and/or modify  *
+ *  it under the terms of the GNU General Public License as published by  *
+ *  the Free Software Foundation. This program is distributed in the      *
+ *  hope that it will be useful, but WITHOUT ANY WARRANTY; without even   *
+ *  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR   *
+ *  PURPOSE. See the GNU General Public License for more details.         *
+ *                                                                        *
+ **************************************************************************/
+
+using Models;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ScheduleListPersistance
 {
@@ -20,7 +36,7 @@ namespace ScheduleListPersistance
         /// </summary>
         private Persistance()
         {
-            string connString = "SERVER= 127.0.0.1;PORT=3306;DATABASE=schedule_list;UID=root;PASSWORD=mysql;";
+            string connString = "SERVER= 127.0.0.1;PORT=3306;DATABASE=schedule_list;UID=root;PASSWORD=admin;";
 
             try
             {
@@ -323,7 +339,7 @@ namespace ScheduleListPersistance
         /// </summary>
         /// <param name="currentDate"></param>
         /// <returns></returns>
-        private bool DayExists(string currentDate)
+        public bool DayExists(string currentDate)
         {
             string sql = "SELECT * FROM days where days.date=@date";
             var cmd = new MySqlCommand(sql, _connection);
@@ -533,6 +549,10 @@ namespace ScheduleListPersistance
 
             }
             catch (MySqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            catch(NullReferenceException e)
             {
                 Console.WriteLine(e.ToString());
             }

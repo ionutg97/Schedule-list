@@ -1,12 +1,26 @@
-﻿using Models;
+﻿/**************************************************************************
+ *                                                                        *
+ *  File:        Form1.cs                                                 *
+ *  Copyright:   (c) 2019-2020                                            *
+ *                Ciobanu Denis Marian                                    *
+ *                Galan Ionut Andrei                                      *
+ *  Description: Task Shedule - Windows Form Program                      *
+ *                                                                        *
+ *  This program is free software; you can redistribute it and/or modify  *
+ *  it under the terms of the GNU General Public License as published by  *
+ *  the Free Software Foundation. This program is distributed in the      *
+ *  hope that it will be useful, but WITHOUT ANY WARRANTY; without even   *
+ *  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR   *
+ *  PURPOSE. See the GNU General Public License for more details.         *
+ *                                                                        *
+ **************************************************************************/
+
+using Models;
 using ScheduleListController;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 
@@ -38,8 +52,10 @@ namespace ScheduleList
         }
         /// <summary>
         ///  Ciobanu Denis Marian
-        ///  On form load: configure view (dates on buttons, config dataGridView and dateTimePicker appearances)
+        ///  On form load: configure view (dates on buttons, config dataGridView and dateTimePicker appearances).
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
             DisplayDateForButtons();
@@ -59,8 +75,10 @@ namespace ScheduleList
 
         /// <summary>
         ///  Ciobanu Denis Marian
-        ///  Click on task to view options menu having following items: update, delete, more
+        ///  Click on task to view options menu having following items: update, delete, more.
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void dataGridView_MouseClick(object sender, MouseEventArgs e)
         {
             menu = new System.Windows.Forms.ContextMenuStrip();
@@ -83,8 +101,10 @@ namespace ScheduleList
 
         /// <summary>
         ///  Ciobanu Denis Marian
-        ///  Let user choose one of the following options: update task, delete task, find out more about task
+        ///  Let user choose one of the following options: update task, delete task, find out more about task.
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void menu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             string title = "";
@@ -132,8 +152,10 @@ namespace ScheduleList
 
         /// <summary>
         ///  Ciobanu Denis Marian
-        ///  when click button show all task scheduled for that day
+        ///  when click button show all task scheduled for that day.
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_click(object sender, EventArgs e)
         {
             panel7.Visible = true;
@@ -203,9 +225,7 @@ namespace ScheduleList
 
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-        }
+        private void label8_Click(object sender, EventArgs e){}
 
         /// <summary>
         ///  Ciobanu Denis Marian
@@ -224,8 +244,10 @@ namespace ScheduleList
 
         /// <summary>
         ///  Ciobanu Denis Marian
-        ///  Click button to show Add Task Panel
+        ///  Click button to show Add Task Panel.
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button8_Click(object sender, EventArgs e)
         {
             CleanControls();
@@ -249,8 +271,10 @@ namespace ScheduleList
 
         /// <summary>
         ///  Ciobanu Denis Marian
-        ///  Click save for adding new task; apply validations
+        ///  Click save for adding new task; apply validations.
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button10_Click(object sender, EventArgs e)
         {
             if (TitleValidation())
@@ -311,7 +335,7 @@ namespace ScheduleList
 
         /// <summary>
         ///  Ciobanu Denis Marian
-        ///  Validate priority inputs
+        ///  Validate priority inputs.
         /// </summary>
         private bool RadioButtonsValidation()
         {
@@ -337,7 +361,7 @@ namespace ScheduleList
 
         /// <summary>
         ///  Ciobanu Denis Marian
-        ///  Validate if dates have been both selected inputs
+        ///  Validate if dates have been both selected inputs.
         /// </summary>
         private bool SelectdDatesValidator()
         {
@@ -346,7 +370,7 @@ namespace ScheduleList
 
         /// <summary>
         ///  Ciobanu Denis Marian
-        ///  Check if end date is selected after start date
+        ///  Check if end date is selected after start date.
         /// </summary>
         private bool IntervalValidator()
         {
@@ -355,7 +379,7 @@ namespace ScheduleList
 
         /// <summary>
         ///  Ciobanu Denis Marian
-        ///  Show dates on buttons
+        ///  Show dates on buttons.
         /// </summary>
         private void DisplayDateForButtons()
         {
@@ -397,8 +421,10 @@ namespace ScheduleList
 
         /// <summary>
         ///  Ciobanu Denis Marian
-        ///  Display start_date calendar and disable the other controlls
+        ///  Display start_date calendar and disable the other controlls.
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button9_Click(object sender, EventArgs e)
         {
             monthCalendar1.Visible = true;
@@ -411,8 +437,10 @@ namespace ScheduleList
 
         /// <summary>
         ///  Ciobanu Denis Marian
-        ///  Display end_date calendar and disable the other controlls
+        ///  Display end_date calendar and disable the other controlls.
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button11_Click(object sender, EventArgs e)
         {
             monthCalendar2.Visible = true;
@@ -427,6 +455,8 @@ namespace ScheduleList
         ///  Ciobanu Denis Marian
         ///  Event for when end_date is selected
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void End_Date_Selected(object sender, DateRangeEventArgs e)
         {
             monthCalendar2.Visible = false;
@@ -441,8 +471,10 @@ namespace ScheduleList
 
         /// <summary>
         ///  Ciobanu Denis Marian
-        ///  Event for when start_date is selected
+        ///  Event for when start_date is selected.
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Start_Date_Selected(object sender, DateRangeEventArgs e)
         {
             monthCalendar1.Visible = false;
@@ -455,6 +487,12 @@ namespace ScheduleList
             selectedDates++;
         }
 
+        /// <summary>
+        ///  Ciobanu Denis Marian
+        ///  Hide or display statsBlock.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button13_Click(object sender, EventArgs e)
         {
             if (statsBlock.Visible)
@@ -465,8 +503,10 @@ namespace ScheduleList
 
         /// <summary>
         /// Galan Ionut Andrei
-        /// Daily Statistics 
+        /// Daily Statistics.
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void todayStats_Click(object sender, EventArgs e)
         {
             DateTime baseDate = DateTime.Today;
@@ -503,8 +543,10 @@ namespace ScheduleList
         }
         /// <summary>
         /// Galan Ionut Andrei
-        /// Weekly Statistics 
+        /// Weekly Statistics.
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void weekStats_Click(object sender, EventArgs e)
         {
             DateTime baseDate = DateTime.Today;
@@ -545,8 +587,10 @@ namespace ScheduleList
 
         /// <summary>
         /// Galan Ionut Andrei
-        /// Monthly Statistics 
+        /// Monthly Statistics.
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void customStats_Click(object sender, EventArgs e)
         {
            
@@ -573,9 +617,12 @@ namespace ScheduleList
 
         }
         /// <summary>
+        /// Galan Ionut Andrei
         /// Calculate statistics between two Date and verify if the start date is smaller then end date.
         /// If input date was validated the border button will be green in other case the border button is red.
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonViewStatistics_Click(object sender, EventArgs e)
         {
             var thisCustomStart = dateTimePicker2.Value.Date;
@@ -612,6 +659,12 @@ namespace ScheduleList
         }
 
 
+        /// <summary>
+        ///  Ciobanu Denis Marian
+        ///  Clear selection for dataGrid.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView_SelectionChanged(object sender, EventArgs e)
         {
             dataGridView1.ClearSelection();
@@ -619,8 +672,10 @@ namespace ScheduleList
 
         /// <summary>
         ///  Ciobanu Denis Marian
-        ///  Event triggered after user press Enter to update task
+        ///  Event triggered after user press Enter to update task.
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cellValueChangedEvent(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.CurrentCell.Style.BackColor = Color.MediumPurple;
