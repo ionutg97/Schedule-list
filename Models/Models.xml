@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Models</name>
+    </assembly>
+    <members>
+        <member name="T:Models.Day">
+            <summary>
+             Halip Vasile Emanuel
+             Day model.
+            </summary>
+        </member>
+        <member name="T:Models.Task">
+            <summary>
+             Halip Vasile Emanuel
+             Task model.
+            </summary>
+        </member>
+    </members>
+</doc>

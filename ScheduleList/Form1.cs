@@ -708,5 +708,10 @@ namespace ScheduleList
                 MessageBox.Show("Task sucessfully updated!");
             }
         }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("E:/IP Project/schedulelist2/Schedule-list/Schedule List Help.chm");
+        }
     }
 }

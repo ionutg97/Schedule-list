@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ScheduleListService</name>
+    </assembly>
+    <members>
+        <member name="M:ScheduleListService.Service.CreateNewTask(Models.Task)">
+            <summary>
+             Halip Vasile Emanuel
+             Call the method from the persistance layer.
+             Create a new Task.
+            </summary>
+            <param name="task"></param>
+        </member>
+        <member name="M:ScheduleListService.Service.GetDays">
+            <summary>
+             Halip Vasile Emanuel
+             Call the method from the persistance layer.
+             Get days list.
+            </summary>
+        </member>
+        <member name="M:ScheduleListService.Service.GetTasks">
+            <summary>
+             Halip Vasile Emanuel
+             Call the method from the persistance layer.
+             Get task list.
+            </summary>
+        </member>
+        <member name="M:ScheduleListService.Service.SayHello">
+            <summary>
+             Halip Vasile Emanuel
+             For test purpose only.
+            </summary>
+        </member>
+        <member name="M:ScheduleListService.Service.GetCompletedTaskNumbers">
+            <summary>
+            Stan Dragos
+            Get number of completed tasks.
+            </summary>
+            <returns>Number of completed Tasks.</returns>
+        </member>
+        <member name="M:ScheduleListService.Service.GetInProgressTaskNumbers">
+            <summary>
+            Stan Dragos
+            Get number of in progress tasks.
+            </summary>
+            <returns>Number of in progress tasks</returns>
+        </member>
+        <member name="M:ScheduleListService.Service.DeleteTask(Models.Task)">
+            <summary>
+             Halip Vasile Emanuel
+             Call the method from the persistance layer.
+             Delete a task from db.
+            </summary>
+            <param name="task"></param>
+        </member>
+        <member name="M:ScheduleListService.Service.UpdateTaskDetails(Models.Task,System.String,System.String,System.String)">
+            <summary>
+            Stan Dragos
+            Update Task details for a given task members. Call the method from persistance layer.
+            </summary>
+            <param name="task"></param>
+            <param name="title"></param>
+            <param name="subtitle"></param>
+            <param name="description"></param>
+            <returns>Updated Task</returns>
+        </member>
+        <member name="M:ScheduleListService.Service.UpdateTaskStatus(Models.Task,System.String)">
+            <summary>
+            Stan Dragos
+            Update Task status for a given status. Call the method from persistance layer.
+            </summary>
+            <param name="task"></param>
+            <param name="status"></param>
+            <returns>Updated Task</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:ScheduleListService.Service.GetTasksForAGivenDate(System.String)" -->
+        <member name="M:ScheduleListService.Service.UpdateTaskFowView(Models.Task,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Ciobanu Denis Marian
+            Update a task for a given task members.
+            </summary>
+            <param name="task"></param>
+            <param name="time"></param>
+            <param name="title"></param>
+            <param name="subtitle"></param>
+            <param name="status"></param>
+            <param name="priority"></param>
+            <returns>Updated Task</returns>
+        </member>
+        <member name="M:ScheduleListService.Service.GetFinishedTasksPercent(System.String,System.String)">
+            <summary>
+            Stan Dragos
+            Get all tasks between those 2 dates, calling function from the persistance layer.
+            returns an int that represents the percent of done tasks from db.
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <returns>Percent of finished tasks</returns>
+        </member>
+        <member name="M:ScheduleListService.Service.CalcualteFinishedTaskPercent(System.Collections.Generic.List{Models.Task})">
+            <summary>
+            Stan Dragos
+            returns an int that represents the percent of done tasks from db.
+            </summary>
+            <param name="allTasksBetweenDays"></param>
+            <returns>Percent of finished tasks</returns>
+        </member>
+        <member name="M:ScheduleListService.Service.GetEffiencyOfTasksPercent(System.String,System.String)">
+            <summary>
+            Stan Dragos
+            Get all tasks between those 2 dates, calling function from the persistance layer
+            Returns an int that represents the efficiency of user calculated under a personalized formula 
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <returns>Percent of task effiency for a given period</returns>
+        </member>
+        <member name="M:ScheduleListService.Service.CreateNewTask(System.String,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+             Halip Vasile Emanuel
+             Create a task object for internal usage.
+            </summary>
+            <param name="time"></param>
+            <param name="title"></param>
+            <param name="subtitle"></param>
+            <param name="description"></param>
+            <param name="status"></param>
+            <param name="priority"></param>
+            <returns>Created task</returns>
+        </member>
+        <member name="M:ScheduleListService.Service.ConvertStringToDate(System.String)">
+            <summary>
+             Halip Vasile Emanuel
+             Convert a string to Datetime -> we need only the date in this case
+            </summary>
+            <param name="stringDate"></param>
+            <returns>New DateTime object</returns>        
+        </member>
+        <member name="M:ScheduleListService.Service.CalculateEffiencyOfTasksPercent(System.Collections.Generic.List{Models.Task})">
+            <summary>
+            Stan Dragos
+            Returns an decimal that represents the efficiency of user calculated under a personalized formula.
+            </summary>
+            <param name="tasks"></param>
+            <returns>Percent of tasks effiency</returns>
+        </member>
+        <member name="M:ScheduleListService.Service.GetTasksBetweenTwoDates(System.String,System.String)">
+            <summary>
+            Halip Vasile Emanuel
+            Get a list of task for a given start date and end date.
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <returns>List of tasks between a given date</returns>
+        </member>
+    </members>
+</doc>
