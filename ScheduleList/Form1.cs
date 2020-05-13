@@ -166,11 +166,8 @@ namespace ScheduleList
             }
 
             string date = day + "." + month + "." + year;
-            MessageBox.Show(date);
             selectedDate = date;
             List<Task> tasks = controller.GetTasksForAGivenDate(selectedDate);
-
-            //List<Task> tasks = getTasks(date);
 
             DataTable table = new DataTable();
 
