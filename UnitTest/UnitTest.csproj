@@ -29,6 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\UnitTest.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -64,6 +65,7 @@
   <ItemGroup>
     <Compile Include="PersistanceLayerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceLayerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -76,6 +78,10 @@
     <ProjectReference Include="..\ScheduleListPersistance\ScheduleListPersistance.csproj">
       <Project>{5b5806b4-169e-40e2-94cc-ba8a54c2a1fc}</Project>
       <Name>ScheduleListPersistance</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScheduleListService\ScheduleListService.csproj">
+      <Project>{2a5c92e8-4633-435d-8da1-e9d4473e50a7}</Project>
+      <Name>ScheduleListService</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,22 @@
-﻿using Models;
+﻿/**************************************************************************
+ *                                                                        *
+ *  File:        Controller.cs                                            *
+ *  Copyright:   (c) 2019-2020                                            *
+ *                Stan Dragos                                             *
+ *                Halip Vasile Emanuel                                    *
+ *                Ciobanu Denis Marian                                    *
+ *                Galan Ionut Andrei                                      *
+ *  Description: Task Shedule - Windows Form Program                      *
+ *                                                                        *
+ *  This program is free software; you can redistribute it and/or modify  *
+ *  it under the terms of the GNU General Public License as published by  *
+ *  the Free Software Foundation. This program is distributed in the      *
+ *  hope that it will be useful, but WITHOUT ANY WARRANTY; without even   *
+ *  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR   *
+ *  PURPOSE. See the GNU General Public License for more details.         *
+ *                                                                        *
+ **************************************************************************/
+using Models;
 using ScheduleListService;
 using System;
 using System.Collections.Generic;
@@ -64,6 +82,7 @@ namespace ScheduleListController
         ///  Call the method from the service layer.
         ///  Create new Task.
         /// </summary>
+        /// <param name="task"></param>
         public void CreateNewTask(Task task)
         {
             _service.CreateNewTask(task);
@@ -77,7 +96,6 @@ namespace ScheduleListController
         {
             return _service.GetCompletedTaskNumbers();
         }
-        
 
         /// <summary>
         ///  Stan Dragos
@@ -93,6 +111,7 @@ namespace ScheduleListController
         ///  Call the method from the service layer.
         ///  Delete a task.
         /// </summary>
+        /// <param name="task"></param>
         public void DeleteTask(Task task)
         {
             _service.DeleteTask(task);
@@ -101,8 +120,13 @@ namespace ScheduleListController
         /// <summary>
         ///  Stan Dragos
         ///  Call the method from the service layer.
-        ///  Update a task by title, subtitle and description.
+        ///  Update a task by title, subtitle and description
         /// </summary>
+        /// <param name="task"></param>
+        /// <param name="title"></param>
+        /// <param name="subtitle"></param>
+        /// <param name="description"></param>
+        /// <returns></returns>
         public Task UpdateTaskDetails(Task task, string title, string subtitle, string description)
         {
             return _service.UpdateTaskDetails(task, title, subtitle, description);
@@ -113,6 +137,9 @@ namespace ScheduleListController
         ///  Call the method from the service layer.
         ///  Update a task by status.
         /// </summary>
+        /// <param name="task"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
         public Task UpdateTaskStatus(Task task, string status)
         {
             return _service.UpdateTaskStatus(task, status);
@@ -123,11 +150,24 @@ namespace ScheduleListController
         ///  Call the method from the service layer.
         ///  Get a list of tasks for a given date.
         /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public List<Task> GetTasksForAGivenDate(string date)
         {
             return _service.GetTasksForAGivenDate(date);
         }
 
+        /// <summary>
+        /// Denis Ciobanu
+        /// Update Task with new valus.
+        /// </summary>
+        /// <param name="task"></param>
+        /// <param name="time"></param>
+        /// <param name="title"></param>
+        /// <param name="subtitle"></param>
+        /// <param name="status"></param>
+        /// <param name="priority"></param>
+        /// <returns></returns>
         public Task UpdateTaskFowView(Task task, string time, string title, string subtitle, string status, int priority)
         {
             return _service.UpdateTaskFowView(task, time, title, subtitle, status, priority);
@@ -136,8 +176,11 @@ namespace ScheduleListController
         /// <summary>
         ///  Stan Dragos
         ///  Call the method from the service layer.
-        ///  Ges finished tasks percent for a certain day interval.
+        ///  Get finished tasks percent for a certain day interval.
         /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
         public decimal GetFinishedTasksPercent(string start, string end)
         {
             return _service.GetFinishedTasksPercent(start, end);
@@ -148,6 +191,9 @@ namespace ScheduleListController
         ///  Call the method from the service layer.
         ///  Get efficiency percent for a certain day interval.
         /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
         public decimal GetEffiencyOfTasksPercent(string start, string end)
         {
             return _service.GetEffiencyOfTasksPercent(start, end);

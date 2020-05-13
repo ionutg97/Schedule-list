@@ -1,10 +1,26 @@
-﻿using Models;
+﻿/**************************************************************************
+ *                                                                        *
+ *  File:        Persistance.cs                                           *
+ *  Copyright:   (c) 2019-2020                                            *
+ *                Stan Dragos                                             *
+ *                Halip Vasile Emanuel                                    *
+ *                Ciobanu Denis Marian                                    *
+ *                Galan Ionut Andrei                                      *
+ *  Description: Task Shedule - Windows Form Program                      *
+ *                                                                        *
+ *  This program is free software; you can redistribute it and/or modify  *
+ *  it under the terms of the GNU General Public License as published by  *
+ *  the Free Software Foundation. This program is distributed in the      *
+ *  hope that it will be useful, but WITHOUT ANY WARRANTY; without even   *
+ *  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR   *
+ *  PURPOSE. See the GNU General Public License for more details.         *
+ *                                                                        *
+ **************************************************************************/
+
+using Models;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ScheduleListPersistance
 {
@@ -131,6 +147,8 @@ namespace ScheduleListPersistance
         ///  Halip Vasile Emanuel
         ///  Get a list of task from db for a given date.
         /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
         List<Task> IPersistance.GetTasksForAGivenDate(string date)
         {
             List<Task> tasks = new List<Task>();
@@ -177,6 +195,7 @@ namespace ScheduleListPersistance
         ///  If the currentDate exist we can directly insert the task into db.
         ///  Otherwise we insert a new day, get it's id and using it to create a new task.
         /// </summary>
+        /// <param name="task"></param>
         public void CreateNewTask(Task task)
         {
             //string currentDate = "20.04.2050"; // use this to see tha else branch is working as expected
@@ -202,6 +221,7 @@ namespace ScheduleListPersistance
         ///  Halip Vasile Emanuel
         ///  Insert a new day in db.
         /// </summary>
+        /// <param name="currentDate"></param>
         private void InsertDateIntoDb(string currentDate)
         {
             string sql = "INSERT INTO days(`date`) VALUES(@date)";
@@ -225,6 +245,7 @@ namespace ScheduleListPersistance
         ///  Halip Vasile Emanuel
         ///  Insert a new task in db and day_id( is fk that link days and tasks tables).
         /// </summary>
+        /// <param name="task"></param>
         private void InsertTaskIntoDb(Task task)
         {
             string sql = "INSERT INTO tasks(`time`, `title`, `subtitle`, `description`, `status`,`priority`, `day_id`)" +
@@ -256,6 +277,7 @@ namespace ScheduleListPersistance
         ///  Halip Vasile Emanuel
         ///  Delete a task from db.
         /// </summary>
+        /// <param name="task"></param>
         public void DeleteTask(Task task)
         {
             //string sql = "delete from tasks where time=@time and title=@title and day_id=@day_id and description=@description";
@@ -283,6 +305,8 @@ namespace ScheduleListPersistance
         ///  Halip Vasile Emanuel
         ///  Return a unique id from bd for a given date from days table.
         /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
         private int GetIdForAGivenDate(string date)
         {
             int id = -1;
@@ -313,7 +337,9 @@ namespace ScheduleListPersistance
         ///  Halip Vasile Emanuel
         ///  Check in days table if exist a column that contains our currenDate.
         /// </summary>
-        private bool DayExists(string currentDate)
+        /// <param name="currentDate"></param>
+        /// <returns></returns>
+        public bool DayExists(string currentDate)
         {
             string sql = "SELECT * FROM days where days.date=@date";
             var cmd = new MySqlCommand(sql, _connection);
@@ -342,6 +368,13 @@ namespace ScheduleListPersistance
         ///  Halip Vasile Emanuel
         ///  Create a new task with given values.
         /// </summary>
+        /// <param name="time"></param>
+        /// <param name="title"></param>
+        /// <param name="subtitle"></param>
+        /// <param name="description"></param>
+        /// <param name="status"></param>
+        /// <param name="priority"></param>
+        /// <returns></returns>
         public Task CreateNewTask(string time, string title, string subtitle, string description, string status, int priority)
         {
             Task task = new Task();
@@ -352,28 +385,6 @@ namespace ScheduleListPersistance
             task.Status = status;
             task.Priority = priority;
             return task;
-        }
-
-        /// <summary>
-        ///  Halip Vasile Emanuel
-        ///  Convert a string to Datetime -> we need only the date in this case
-        /// </summary>
-        private DateTime ConvertStringToDate(string stringDate)
-        {
-            // formatul este asa =>     1/5/2020 12:00:00 AM
-            string[] peaches = stringDate.Split(' ');  /// fac split in functie de spatiu 
-            string[] date = peaches[0].Split('/');  /// apoi fac split in functie de / ca sa extrag data
-
-            /*Console.WriteLine("" + date[0].ToString());
-             Console.WriteLine("" + date[1].ToString());
-             Console.WriteLine("" + date[2].ToString());*/
-
-            int day = Int32.Parse(date[1]);
-            int month = Int32.Parse(date[0]);
-            int year = Int32.Parse(date[2]);
-
-            DateTime dt = new DateTime(year, month, day, 0, 0, 0);
-            return dt;
         }
 
         /// <summary>
@@ -407,6 +418,11 @@ namespace ScheduleListPersistance
         ///  Stan Dragos
         ///  Update a task from db by title, subtitle and description.
         /// </summary>
+        /// <param name="task"></param>
+        /// <param name="title"></param>
+        /// <param name="subtitle"></param>
+        /// <param name="description"></param>
+        /// <returns></returns>
         public Task UpdateTaskDetails(Task task, string title, string subtitle, string description)
         {
             string sql = "update tasks set title=@title, subtitle=@subtitle, description=@description where id=@id";
@@ -433,6 +449,9 @@ namespace ScheduleListPersistance
         ///  Stan Dragos
         ///  Update a task from db by status.
         /// </summary>
+        /// <param name="task"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
         public Task UpdateTaskStatus(Task task, string status)
         {
             string sql = "update tasks set status=@status where id=@id";
@@ -457,6 +476,9 @@ namespace ScheduleListPersistance
         ///  Stan Dragos
         ///  Get list of all tasks that are in between two dates.
         /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
         public List<Task> GetTasksBetweenDates(string start, string end)
         {
             List<Task> tasks = new List<Task>();
@@ -498,6 +520,13 @@ namespace ScheduleListPersistance
         ///  Ciobanu Denis Marian
         ///  Update Task by giving proprieties from view.
         /// </summary>
+        /// <param name="task"></param>
+        /// <param name="time"></param>
+        /// <param name="title"></param>
+        /// <param name="subtitle"></param>
+        /// <param name="status"></param>
+        /// <param name="priority"></param>
+        /// <returns></returns>
         public Task UpdateTaskFowView(Task task, string time, string title, string subtitle, string status, int priority)
         {
             
@@ -520,6 +549,10 @@ namespace ScheduleListPersistance
 
             }
             catch (MySqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            catch(NullReferenceException e)
             {
                 Console.WriteLine(e.ToString());
             }
