@@ -47,5 +47,7 @@ namespace ScheduleListPersistance
         Task UpdateTaskFowView(Task task, string time, string title, string subtitle, string status, int priority);
         List<Task> GetTasksBetweenDates(string start, string end);
         bool DayExists(string currentDate);
+
+        int GetIdForAGivenDate(string date);
     }
 }

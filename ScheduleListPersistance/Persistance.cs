@@ -307,7 +307,7 @@ namespace ScheduleListPersistance
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
-        private int GetIdForAGivenDate(string date)
+        public int GetIdForAGivenDate(string date)
         {
             int id = -1;
 
