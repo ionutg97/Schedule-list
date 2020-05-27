@@ -708,7 +708,7 @@ namespace ScheduleList
 
         private void button14_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("E:/IP Project/schedulelist2/Schedule-list/Schedule List Help.chm");
+            System.Diagnostics.Process.Start("C:/EMANUEL_DOCS/_IP/Schedule-list/Schedule List Help.chm");
         }
     }
 }
