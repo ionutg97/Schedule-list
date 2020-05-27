@@ -29,18 +29,18 @@ namespace ScheduleList
     public partial class Form1 : Form
     {
 
-        int selectedDates = 0;
-        DateTime startDate;
-        DateTime endDate;
-        ContextMenuStrip menu;
-        bool addButtonSelected = false;
-        Controller controller = null;
-        string selectedDate = "";
-        Task mainSelectedTask;
+        int _selectedDates = 0;
+        DateTime _startDate;
+        DateTime _endDate;
+        ContextMenuStrip _menu;
+        bool _addButtonSelected = false;
+        Controller _controller = null;
+        string _selectedDate = "";
+        Task _mainSelectedTask;
         public Form1()
         {
             InitializeComponent();
-            controller = new Controller();
+            _controller = new Controller();
             panel7.Visible = true;
             panel6.Visible = false;
 
@@ -59,7 +59,7 @@ namespace ScheduleList
         private void Form1_Load(object sender, EventArgs e)
         {
             DisplayDateForButtons();
-            selectedDates = 0;
+            _selectedDates = 0;
 
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "hh:mm:ss";
@@ -81,7 +81,7 @@ namespace ScheduleList
         /// <param name="e"></param>
         void dataGridView_MouseClick(object sender, MouseEventArgs e)
         {
-            menu = new System.Windows.Forms.ContextMenuStrip();
+            _menu = new System.Windows.Forms.ContextMenuStrip();
             if (e.Button == MouseButtons.Left)
             {
 
@@ -89,13 +89,13 @@ namespace ScheduleList
 
                 if (mousePosition >= 0)
                 {
-                    menu.Items.Add("Update").Name = "Update";
-                    menu.Items.Add("Delete").Name = "Delete";
-                    menu.Items.Add("More").Name = "More";
+                    _menu.Items.Add("Update").Name = "Update";
+                    _menu.Items.Add("Delete").Name = "Delete";
+                    _menu.Items.Add("More").Name = "More";
 
                 }
-                menu.Show(dataGridView1, new Point(e.X, e.Y));
-                menu.ItemClicked += new ToolStripItemClickedEventHandler(menu_ItemClicked);
+                _menu.Show(dataGridView1, new Point(e.X, e.Y));
+                _menu.ItemClicked += new ToolStripItemClickedEventHandler(menu_ItemClicked);
             }
         }
 
@@ -114,35 +114,35 @@ namespace ScheduleList
             time = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             title = dataGridView1.CurrentRow.Cells[1].Value.ToString();
 
-            tasks = controller.GetTasksForAGivenDate(selectedDate);
+            tasks = _controller.GetTasksForAGivenDate(_selectedDate);
             Task selectedTask = new Task();
             foreach (Task t in tasks)
             {
                 if (t.Time == time && t.Title == title)
                 {
                     selectedTask = t;
-                    mainSelectedTask = t;
+                    _mainSelectedTask = t;
                 }
             }
 
             switch (e.ClickedItem.Name.ToString())
             {
                 case "Update":
-                    menu.Visible = false;
+                    _menu.Visible = false;
                     dataGridView1.CurrentCell.Style.BackColor = Color.White;
                     dataGridView1.CurrentCell.Style.ForeColor = Color.Blue;
 
                     break;
                 case "Delete":
-                    menu.Visible = false;
+                    _menu.Visible = false;
                     if (selectedTask != null)
                     {
-                        controller.DeleteTask(selectedTask);
+                        _controller.DeleteTask(selectedTask);
                     }
                     dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);
                     break;
                 case "More":
-                    menu.Visible = false;
+                    _menu.Visible = false;
                     string description = selectedTask.Description;
 
                     MessageBox.Show("Description:\n\n" + description);
@@ -188,8 +188,8 @@ namespace ScheduleList
             }
 
             string date = day + "." + month + "." + year;
-            selectedDate = date;
-            List<Task> tasks = controller.GetTasksForAGivenDate(selectedDate);
+            _selectedDate = date;
+            List<Task> tasks = _controller.GetTasksForAGivenDate(_selectedDate);
 
             DataTable table = new DataTable();
 
@@ -236,7 +236,7 @@ namespace ScheduleList
             textBox1.Clear();
             textBox2.Clear();
             richTextBox1.Clear();
-            selectedDates = 0;
+            _selectedDates = 0;
         }
 
         /// <summary>
@@ -249,16 +249,16 @@ namespace ScheduleList
         {
             CleanControls();
 
-            if (addButtonSelected == false)
+            if (_addButtonSelected == false)
             {
-                addButtonSelected = true;
+                _addButtonSelected = true;
                 panel6.Visible = true;
                 panel7.Visible = false;
 
             }
             else
             {
-                addButtonSelected = false;
+                _addButtonSelected = false;
                 panel6.Visible = false;
                 panel7.Visible = true;
             }
@@ -301,7 +301,7 @@ namespace ScheduleList
                             else
                                 task.Priority = 1;
 
-                            controller.CreateNewTask(task);
+                            _controller.CreateNewTask(task);
 
                             MessageBox.Show("Succesfully added new task!");
                             panel7.Visible = true;
@@ -362,7 +362,7 @@ namespace ScheduleList
         /// </summary>
         private bool SelectdDatesValidator()
         {
-            return selectedDates < 2 ? false : true;
+            return _selectedDates < 2 ? false : true;
         }
 
         /// <summary>
@@ -371,7 +371,7 @@ namespace ScheduleList
         /// </summary>
         private bool IntervalValidator()
         {
-            return endDate >= startDate ? true : false;
+            return _endDate >= _startDate ? true : false;
         }
 
         /// <summary>
@@ -461,9 +461,9 @@ namespace ScheduleList
             {
                 c.Enabled = true;
             }
-            endDate = monthCalendar2.SelectionRange.Start;
-            var selectedDate = endDate.ToString("dd MMM yyyy");
-            selectedDates++;
+            _endDate = monthCalendar2.SelectionRange.Start;
+            var selectedDate = _endDate.ToString("dd MMM yyyy");
+            _selectedDates++;
         }
 
         /// <summary>
@@ -479,9 +479,9 @@ namespace ScheduleList
             {
                 c.Enabled = true;
             }
-            startDate = monthCalendar1.SelectionRange.Start;
-            var selectedDate = startDate.ToString("dd MMM yyyy");
-            selectedDates++;
+            _startDate = monthCalendar1.SelectionRange.Start;
+            var selectedDate = _startDate.ToString("dd MMM yyyy");
+            _selectedDates++;
         }
 
         /// <summary>
@@ -517,12 +517,12 @@ namespace ScheduleList
             groupBoxInputDateStatistics.Visible = false;
             buttonViewStatistics.Visible = false;
 
-            int resultEfficiency = (int)controller.GetEffiencyOfTasksPercent(date, date);
+            int resultEfficiency = (int)_controller.GetEffiencyOfTasksPercent(date, date);
             efficiencyProgressBar.SubscriptText = resultEfficiency.ToString();
             efficiencyProgressBar.Value = resultEfficiency;
             efficiencyProgressBar.Update();
 
-            int resultFinished = (int)controller.GetFinishedTasksPercent(date, date);
+            int resultFinished = (int)_controller.GetFinishedTasksPercent(date, date);
             int resultRemaining = (int)(100 - resultFinished);
             remainingProgressBar.SubscriptText = resultRemaining.ToString();
             remainingProgressBar.Value = resultRemaining;
@@ -560,12 +560,12 @@ namespace ScheduleList
             groupBoxInputDateStatistics.Visible = false;
             buttonViewStatistics.Visible = false;
 
-            int resultEfficiency = (int)controller.GetEffiencyOfTasksPercent(thisWeekStartString, thisWeekEndString);
+            int resultEfficiency = (int)_controller.GetEffiencyOfTasksPercent(thisWeekStartString, thisWeekEndString);
             efficiencyProgressBar.SubscriptText = resultEfficiency.ToString();
             efficiencyProgressBar.Value = resultEfficiency;
             efficiencyProgressBar.Update();
 
-            int resultFinished = (int)controller.GetFinishedTasksPercent(thisWeekStartString, thisWeekEndString);
+            int resultFinished = (int)_controller.GetFinishedTasksPercent(thisWeekStartString, thisWeekEndString);
             int resultRemaining = (int)(100 - resultFinished);
             remainingProgressBar.SubscriptText = resultRemaining.ToString();
             remainingProgressBar.Value = resultRemaining;
@@ -633,12 +633,12 @@ namespace ScheduleList
 
                 buttonViewStatistics.FlatAppearance.BorderColor = Color.Green;
 
-                int resultEfficiency = (int)controller.GetEffiencyOfTasksPercent(thisCustomStartString, thisCustomEndString);
+                int resultEfficiency = (int)_controller.GetEffiencyOfTasksPercent(thisCustomStartString, thisCustomEndString);
                 efficiencyProgressBar.SubscriptText = resultEfficiency.ToString();
                 efficiencyProgressBar.Value = resultEfficiency;
                 efficiencyProgressBar.Update();
 
-                int resultFinished = (int)controller.GetFinishedTasksPercent(thisCustomStartString, thisCustomEndString);
+                int resultFinished = (int)_controller.GetFinishedTasksPercent(thisCustomStartString, thisCustomEndString);
                 int resultRemaining = (int)(100 - resultFinished);
                 remainingProgressBar.SubscriptText = resultRemaining.ToString();
                 remainingProgressBar.Value = resultRemaining;
@@ -699,9 +699,9 @@ namespace ScheduleList
                 priority = 3;
             }
 
-            if (mainSelectedTask != null)
+            if (_mainSelectedTask != null)
             {
-                controller.UpdateTaskFowView(mainSelectedTask, time, title, subtitle, status, priority);
+                _controller.UpdateTaskFowView(_mainSelectedTask, time, title, subtitle, status, priority);
                 MessageBox.Show("Task sucessfully updated!");
             }
         }
