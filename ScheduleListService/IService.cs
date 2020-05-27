@@ -30,7 +30,7 @@ namespace ScheduleListService
         List<Task> GetTasks();
         List<Task> GetTasksForAGivenDate(string date);
 
-        void CreateNewTask(Task task);
+        void CreateNewTask(Task task, string selectedDate);
 
         int GetCompletedTaskNumbers();
 

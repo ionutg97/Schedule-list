@@ -83,9 +83,9 @@ namespace ScheduleListController
         ///  Create new Task.
         /// </summary>
         /// <param name="task"></param>
-        public void CreateNewTask(Task task)
+        public void CreateNewTask(Task task, string selectedDate)
         {
-            _service.CreateNewTask(task);
+            _service.CreateNewTask(task, selectedDate);
         }
 
         /// <summary>

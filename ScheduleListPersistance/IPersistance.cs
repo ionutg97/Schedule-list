@@ -31,7 +31,7 @@ namespace ScheduleListPersistance
 
         List<Task> GetTasksForAGivenDate(String date);
 
-        void CreateNewTask(Task task);
+        void CreateNewTask(Task task, string selectedDate);
 
         Task CreateNewTask(string time, string title, string subtitle, string description, string status, int priority);
 

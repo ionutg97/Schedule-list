@@ -41,9 +41,9 @@ namespace ScheduleListService
         ///  Create a new Task.
         /// </summary>
         /// <param name="task"></param>
-        public void CreateNewTask(Task task)
+        public void CreateNewTask(Task task, string selectedDate)
         {
-            _persistance.CreateNewTask(task);
+            _persistance.CreateNewTask(task, selectedDate);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace ScheduleListService
 
             //data exista deja -> ar trebui sa faca insert direct la task
             Task task = CreateNewTask("09:50:05", "y", "y", "y", "new", 2);
-            CreateNewTask(task);
+            CreateNewTask(task, "");
         }
 
         /// <summary>

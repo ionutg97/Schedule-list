@@ -196,21 +196,17 @@ namespace ScheduleListPersistance
         ///  Otherwise we insert a new day, get it's id and using it to create a new task.
         /// </summary>
         /// <param name="task"></param>
-        public void CreateNewTask(Task task)
+        public void CreateNewTask(Task task, string selectedDate)
         {
-            //string currentDate = "20.04.2050"; // use this to see tha else branch is working as expected
-            string currentDate = DateTime.UtcNow.Date.ToString("dd.MM.yyyy");
-            Console.WriteLine(currentDate);
-
-            if (DayExists(currentDate) == true) {
-                int day_id = GetIdForAGivenDate(currentDate);
+            if (DayExists(selectedDate) == true) {
+                int day_id = GetIdForAGivenDate(selectedDate);
                 task.DayId = day_id;
                 InsertTaskIntoDb(task);
             }
             else
             {
-                InsertDateIntoDb(currentDate);
-                int day_id = GetIdForAGivenDate(currentDate);
+                InsertDateIntoDb(selectedDate);
+                int day_id = GetIdForAGivenDate(selectedDate);
                 task.DayId = day_id;
                 InsertTaskIntoDb(task);
             }

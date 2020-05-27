@@ -291,6 +291,8 @@ namespace ScheduleList
                             task.Subtitle = textBox2.Text;
 
                             string time = dateTimePicker1.Value.ToString("hh:mm:ss");
+
+
                             task.Time = time;
                             task.Description = richTextBox1.Text;
                             task.Status = "new";
@@ -301,9 +303,8 @@ namespace ScheduleList
                             else
                                 task.Priority = 1;
 
-                            _controller.CreateNewTask(task);
+                            _controller.CreateNewTask(task, _selectedDate);
 
-                            MessageBox.Show("Succesfully added new task!");
                             panel7.Visible = true;
                             panel6.Visible = false;
 
@@ -480,8 +481,9 @@ namespace ScheduleList
                 c.Enabled = true;
             }
             _startDate = monthCalendar1.SelectionRange.Start;
-            var selectedDate = _startDate.ToString("dd MMM yyyy");
+            _selectedDate = _startDate.ToString("dd.MM.yyyy");
             _selectedDates++;
+
         }
 
         /// <summary>
